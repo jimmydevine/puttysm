@@ -35,11 +35,14 @@ namespace uk.org.riseley.puttySessionManager.form
 
         private const string SAVE_FILE_DIALOG_TITLE = "Export PuTTY Sessions To ";
 
+        protected ISettingsProvider psp;
+
         public SessionManagementForm()
         {
             InitializeComponent();
             sc = SessionController.getInstance();
             nsf = new NewSessionForm(this);
+            psp = new PropertySettingsProvider();
             resetDialogFont();
         }
 
@@ -70,15 +73,19 @@ namespace uk.org.riseley.puttySessionManager.form
 
             if (se.type == ExportSessionEventArgs.ExportType.CLIP_TYPE)
             {
-                int copiedCount = sc.copyHostnamesToClipboard(selectedSessions);
-                if (copiedCount != selectedSessions.Count)
+                ClipboardExport result = sc.copyHostnamesToClipboard(selectedSessions);
+                if (result.SessionCount > 0)
                 {
-                    MessageBox.Show("Only copied "+ copiedCount +" sessions" 
+                    Clipboard.SetText(result.ClipboardText);
+                }
+                if (result.SessionCount != selectedSessions.Count)
+                {
+                    MessageBox.Show("Only copied " + result.SessionCount + " sessions" 
                          , "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Successfully copied " + copiedCount + " hostnames"
+                    MessageBox.Show("Successfully copied " + result.SessionCount + " hostnames"
                         , "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -153,7 +160,7 @@ namespace uk.org.riseley.puttySessionManager.form
                 {
                     if ( nsr.LaunchSession == true )
                     {
-                         String errMsg = sc.launchSession(nsr.SessionName);
+                         String errMsg = sc.launchSession(nsr.SessionName,psp);
                          if (errMsg.Equals("") == false)
                          {
                              MessageBox.Show("PuTTY Failed to start.\nCheck the PuTTY location in System Tray -> Options.\n" +

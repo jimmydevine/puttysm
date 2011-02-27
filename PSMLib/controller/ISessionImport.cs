@@ -45,7 +45,8 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// with the file I/O
         /// </summary>
         /// <param name="location"></param>
+        /// <param name="proxySettings"></param>
         /// <returns></returns>
-        List<Session> loadSessions(String location);
+        List<Session> loadSessions(String location, ProxySettings proxySettings );
     }
 }

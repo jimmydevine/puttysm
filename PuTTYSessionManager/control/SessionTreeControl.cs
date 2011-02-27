@@ -870,7 +870,7 @@ namespace uk.org.riseley.puttySessionManager.control
 
                     if (nsr.LaunchSession == true)
                     {
-                        String errMsg = getSessionController().launchSession(nsr.SessionName);
+                        String errMsg = getSessionController().launchSession(nsr.SessionName, psp);
                         if (errMsg.Equals("") == false)
                         {
                             MessageBox.Show("PuTTY Failed to start.\nCheck the PuTTY location in System Tray -> Options.\n" +

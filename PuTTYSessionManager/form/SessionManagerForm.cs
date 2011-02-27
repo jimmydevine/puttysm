@@ -85,7 +85,7 @@ namespace uk.org.riseley.puttySessionManager.form
         public void doStartupActions()
         {
             // Check to see if PuTTY is accessible
-            if (sc.isPuTTYExecutableAccessible() == false)
+            if (sc.isPuTTYExecutableAccessible(Properties.Settings.Default.PuttyLocation) == false)
             {
                 if (MessageBox.Show("PuTTY location is not accessible\n.Would you like to specify this now?"
                     , "Warning"
@@ -99,7 +99,7 @@ namespace uk.org.riseley.puttySessionManager.form
 
             // Launch Pageant if required
             if (Properties.Settings.Default.LaunchPageantOnStart)
-                sc.launchPageant();
+                sc.launchPageant(psp);
         }
 
         private void LoadLayout()
@@ -282,7 +282,7 @@ namespace uk.org.riseley.puttySessionManager.form
             {
                 if (se.program == LaunchSessionEventArgs.PROGRAM.PUTTY)
                 {
-                    String errMsg = sc.launchSession(se.SessionName());
+                    String errMsg = sc.launchSession(se.SessionName(),psp);
                     if (errMsg.Equals("") == false)
                     {
                         MessageBox.Show("PuTTY Failed to start.\nCheck the PuTTY location in System Tray -> Options.\n" +
@@ -292,7 +292,7 @@ namespace uk.org.riseley.puttySessionManager.form
                 }
                 else if (se.program == LaunchSessionEventArgs.PROGRAM.FILEZILLA)
                 {
-                    String errMsg = sc.launchOtherSession(se.session, se.program);
+                    String errMsg = sc.launchOtherSession(se.session, se.program, psp);
                     if (errMsg.Equals("") == false)
                     {
                         MessageBox.Show("FileZilla Failed to start.\nCheck the FileZilla location in System Tray -> Options.\n" +
@@ -302,7 +302,7 @@ namespace uk.org.riseley.puttySessionManager.form
                 }
                 else if (se.program == LaunchSessionEventArgs.PROGRAM.WINSCP)
                 {
-                    String errMsg = sc.launchOtherSession(se.session, se.program);
+                    String errMsg = sc.launchOtherSession(se.session, se.program, psp);
                     if (errMsg.Equals("") == false)
                     {
                         MessageBox.Show("WinSCP Failed to start.\nCheck the WinSCP location in System Tray -> Options.\n" +

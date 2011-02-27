@@ -61,7 +61,7 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.usernameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.proxyTableLayout.SetColumnSpan(this.usernameTextBox, 2);
-            this.usernameTextBox.Location = new System.Drawing.Point(100, 57);
+            this.usernameTextBox.Location = new System.Drawing.Point(100, 59);
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(206, 21);
@@ -71,7 +71,7 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.passwordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.proxyTableLayout.SetColumnSpan(this.passwordTextBox, 2);
-            this.passwordTextBox.Location = new System.Drawing.Point(100, 84);
+            this.passwordTextBox.Location = new System.Drawing.Point(100, 87);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(206, 21);
@@ -82,7 +82,7 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(39, 61);
+            this.usernameLabel.Location = new System.Drawing.Point(39, 63);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(55, 13);
             this.usernameLabel.TabIndex = 2;
@@ -92,7 +92,7 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(41, 88);
+            this.passwordLabel.Location = new System.Drawing.Point(41, 91);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(53, 13);
             this.passwordLabel.TabIndex = 3;
@@ -103,7 +103,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.proxyTableLayout.SetColumnSpan(this.okButton, 2);
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(84, 111);
+            this.okButton.Location = new System.Drawing.Point(84, 115);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 4;
@@ -113,7 +113,7 @@ namespace uk.org.riseley.puttySessionManager.form
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(165, 111);
+            this.cancelButton.Location = new System.Drawing.Point(165, 115);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -136,7 +136,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.realmLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.realmLabel.AutoSize = true;
             this.proxyTableLayout.SetColumnSpan(this.realmLabel, 3);
-            this.realmLabel.Location = new System.Drawing.Point(163, 34);
+            this.realmLabel.Location = new System.Drawing.Point(163, 35);
             this.realmLabel.Name = "realmLabel";
             this.realmLabel.Size = new System.Drawing.Size(0, 13);
             this.realmLabel.TabIndex = 7;
@@ -164,7 +164,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.proxyTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.proxyTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.proxyTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.proxyTableLayout.Size = new System.Drawing.Size(326, 137);
+            this.proxyTableLayout.Size = new System.Drawing.Size(326, 141);
             this.proxyTableLayout.TabIndex = 8;
             // 
             // ProxyAuthenticationForm
@@ -173,7 +173,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(326, 137);
+            this.ClientSize = new System.Drawing.Size(326, 141);
             this.ControlBox = false;
             this.Controls.Add(this.proxyTableLayout);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);

@@ -17,15 +17,13 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Security.Permissions;
-using System.IO;
-using Microsoft.Win32;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
+using Microsoft.Win32;
 using uk.org.riseley.puttySessionManager.model;
 using uk.org.riseley.puttySessionManager.model.eventargs;
-using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace uk.org.riseley.puttySessionManager.controller
 {
@@ -432,7 +430,7 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// </summary>
         /// <param name="sessionList">The list of sessions to export</param>
         /// <returns>Count of sessions successfully exported</returns>
-        public int copyHostnamesToClipboard(List<Session> sessionList)
+        public ClipboardExport copyHostnamesToClipboard(List<Session> sessionList)
         {
             int sessionCount = 0;
             StringBuilder sb = new StringBuilder();
@@ -441,8 +439,8 @@ namespace uk.org.riseley.puttySessionManager.controller
                 sb.AppendLine(s.getCleanHostname());
                 sessionCount++;
             }
-            Clipboard.SetText(sb.ToString());
-            return sessionCount;
+            ClipboardExport result = new ClipboardExport(sb.ToString(), sessionCount);
+            return result;
         }
 
         /// <summary>
@@ -499,9 +497,9 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// </summary>
         /// <param name="sessionName">The session name to launch</param>
         /// <returns>The error message if the process fails to start</returns>
-        public string launchSession(string sessionName)
+        public string launchSession(string sessionName, ISettingsProvider settingsImpl)
         {
-            String puttyExec = Properties.Settings.Default.PuttyLocation;
+            String puttyExec = settingsImpl.PuttyLocation;
             Process p = new Process();
             p.StartInfo.FileName = puttyExec;
             p.StartInfo.Arguments = "-load \"" + sessionName + "\"";
@@ -526,13 +524,13 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// Launch Pageant with the saved list of keys
         /// </summary>
         /// <returns>The error message if the process fails to start</returns>
-        public string launchPageant()
+        public string launchPageant(ISettingsProvider settingsImpl)
         {
-            String pageantExec = Properties.Settings.Default.PageantLocation;
+            String pageantExec = settingsImpl.PageantLocation;
             Process p = new Process();
             p.StartInfo.FileName = pageantExec;
 
-            foreach (String key in Properties.Settings.Default.PageantKeyList)
+            foreach (String key in settingsImpl.PageantKeyList)
             {
                 p.StartInfo.Arguments += "\"" + key + "\" ";
             }
@@ -626,7 +624,7 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// start Putty Session Manager on logon
         /// </summary>
         /// <param name="enabled">Enable or disable auto start</param>
-        public bool setAutoStart(bool enabled)
+        public bool setAutoStart(bool enabled, string appPath)
         {
             // Assume we fail
             bool result = false;
@@ -646,7 +644,7 @@ namespace uk.org.riseley.puttySessionManager.controller
             {
                 // If we are enabling autstart set the value to the current exec path
                 if (enabled)
-                    rk.SetValue(PSM_AUTOSTART_REG_ATTRIB, "\"" + Application.ExecutablePath + "\"", RegistryValueKind.String);
+                    rk.SetValue(PSM_AUTOSTART_REG_ATTRIB, "\"" + appPath + "\"", RegistryValueKind.String);
                 // otherwise delete it, but only if it exists
                 else if (rk.GetValue(PSM_AUTOSTART_REG_ATTRIB) != null)
                     rk.DeleteValue(PSM_AUTOSTART_REG_ATTRIB, false);
@@ -673,7 +671,7 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// </summary>
         /// <param name="s">The session to launch</param>
         /// <returns>The error message if the process fails to start</returns>
-        public string launchOtherSession(Session s, LaunchSessionEventArgs.PROGRAM program)
+        public string launchOtherSession(Session s, LaunchSessionEventArgs.PROGRAM program, ISettingsProvider settingsImpl)
         {
             String errMsg = "";
 
@@ -706,7 +704,7 @@ namespace uk.org.riseley.puttySessionManager.controller
                 else
                 {
                     // Setup the protocol and port
-                    Protocol fp = (Protocol)Properties.Settings.Default.FileZillaProtocol;
+                    Protocol fp = (Protocol)settingsImpl.FileZillaProtocol;
                     switch (fp)
                     {
                         case Protocol.FTP:
@@ -737,16 +735,16 @@ namespace uk.org.riseley.puttySessionManager.controller
                     }
 
                     String password = "";
-                    if (Properties.Settings.Default.FileZillaVersion == 2)
+                    if (settingsImpl.FileZillaVersion == 2)
                     {
                         // Setup Pageaent auth if requested and the protocol is sftp
                         if (protocol.Equals("sftp://") &&
-                            Properties.Settings.Default.FileZillaAttemptKeyAuth == true)
+                            settingsImpl.FileZillaAttemptKeyAuth == true)
                         {
                             password = ":";
                         }
                     }
-                    else if (Properties.Settings.Default.FileZillaVersion == 3)
+                    else if (settingsImpl.FileZillaVersion == 3)
                     {
                         execArgs = "-l interactive ";
                     }
@@ -759,17 +757,17 @@ namespace uk.org.riseley.puttySessionManager.controller
 
                     execArgs = execArgs + protocol + auth + hostname + ":" + portnumber;
                 }
-                execLocation = Properties.Settings.Default.FileZillaLocation;
+                execLocation = settingsImpl.FileZillaLocation;
 
             }
             else if (program == LaunchSessionEventArgs.PROGRAM.WINSCP)
             {
                 // Setup the /ini option
-                if (Properties.Settings.Default.WinSCPIniEnabled == true &&
-                    Properties.Settings.Default.WinSCPIniLocation != null &&
-                    !Properties.Settings.Default.WinSCPIniLocation.Equals("") )
+                if (settingsImpl.WinSCPIniEnabled == true &&
+                    settingsImpl.WinSCPIniLocation != null &&
+                    !settingsImpl.WinSCPIniLocation.Equals(""))
                 {
-                    execArgs = "/ini=\"" + Properties.Settings.Default.WinSCPIniLocation + "\" ";
+                    execArgs = "/ini=\"" + settingsImpl.WinSCPIniLocation + "\" ";
                 }
 
                 // Setup the /privatekey option 
@@ -782,8 +780,8 @@ namespace uk.org.riseley.puttySessionManager.controller
                 if (hostname != null && hostname.Length != 0)
                 {
                     // Setup the protocol and port
-                    Protocol wp = (Protocol)Properties.Settings.Default.WinSCPProtocol;
-                    int wsVer = Properties.Settings.Default.WinSCPVersion;
+                    Protocol wp = (Protocol)settingsImpl.WinSCPProtocol;
+                    int wsVer = settingsImpl.WinSCPVersion;
 
                     // FTP isn't supported for v3, so default to SFTP
                     if (wsVer == 3 && wp == Protocol.FTP)
@@ -806,7 +804,7 @@ namespace uk.org.riseley.puttySessionManager.controller
                         case Protocol.AUTO:
                             if (protocol.Equals("ssh", StringComparison.InvariantCultureIgnoreCase))
                             {
-                                Protocol wpp = (Protocol)Properties.Settings.Default.WinSCPPrefProtocol;
+                                Protocol wpp = (Protocol)settingsImpl.WinSCPPrefProtocol;
                                 if (wpp == Protocol.SCP)
                                 {
                                     protocol = "scp://";
@@ -839,7 +837,7 @@ namespace uk.org.riseley.puttySessionManager.controller
 
                     execArgs = execArgs + protocol + auth + hostname + ":" + portnumber;
                 }
-                execLocation = Properties.Settings.Default.WinSCPLocation;
+                execLocation = settingsImpl.WinSCPLocation;
             }
 
             Process p = new Process();
@@ -887,9 +885,9 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// Check to see if we can locate the PuTTY exec
         /// </summary>
         /// <returns></returns>
-        public bool isPuTTYExecutableAccessible()
+        public bool isPuTTYExecutableAccessible(string puttyLocation)
         {
-            return File.Exists(Properties.Settings.Default.PuttyLocation);
+            return File.Exists(puttyLocation);
         }
 
 

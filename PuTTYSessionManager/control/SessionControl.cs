@@ -88,6 +88,11 @@ namespace uk.org.riseley.puttySessionManager.control
         protected Boolean enterPressed = false;
 
         /// <summary>
+        /// Settings provider
+        /// </summary>
+        protected ISettingsProvider psp;
+
+        /// <summary>
         /// Default constructor for this control
         /// This will get a reference to the singleton SessionController
         /// and register the SessionsRefreshedEventHandler
@@ -95,6 +100,7 @@ namespace uk.org.riseley.puttySessionManager.control
         public SessionControl()
         {
             sc = SessionController.getInstance();
+            psp = new PropertySettingsProvider();
             InitializeComponent();
             SessionController.SessionsRefreshedEventHandler scHandler = new SessionController.SessionsRefreshedEventHandler(this.SessionsRefreshed);
             sc.SessionsRefreshed += scHandler;

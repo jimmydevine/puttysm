@@ -17,17 +17,15 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
-using uk.org.riseley.puttySessionManager.model;
-using uk.org.riseley.puttySessionManager.form;
 using System.IO;
-using FileHelpers;
 using System.Net;
-using System.Windows.Forms;
+using FileHelpers;
+using uk.org.riseley.puttySessionManager.model;
+using uk.org.riseley.puttySessionManager.model.exception;
 
 namespace uk.org.riseley.puttySessionManager.controller
 {
-    class CsvSessionImportImpl : ISessionImport
+    public class CsvSessionImportImpl : ISessionImport
     {
         /// <summary>
         /// The file type for this provider
@@ -65,7 +63,7 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// </summary>
         /// <param name="location">The location of the csv file</param>
         /// <returns>The list of sessions</returns>
-        public List<Session> loadSessions(string location)
+        public List<Session> loadSessions(string location, ProxySettings proxySettings)  
         {
             Uri uri = null;
             try
@@ -74,7 +72,7 @@ namespace uk.org.riseley.puttySessionManager.controller
             }
             catch (Exception e)
             {
-                throw new Exception("Unable to parse location: " + e.Message);
+                throw new SessionImportException("Unable to parse location: " + e.Message, e);
             }
 
             FileHelperEngine<CsvRecord> engine = new FileHelperEngine<CsvRecord>();
@@ -87,39 +85,44 @@ namespace uk.org.riseley.puttySessionManager.controller
                 {
                     csvList = new List<CsvRecord>(engine.ReadFile(uri.LocalPath));
                 }
-                catch
+                catch (Exception e)
                 {
-                    throw new Exception("Unable to parse sessions file." + Environment.NewLine +
+                    throw new SessionImportException("Unable to parse sessions file." + Environment.NewLine +
                                         "The file may be corrupted or from" + Environment.NewLine +
-                                        "a previous version of PuTTY Session Manager.");
+                                        "a previous version of PuTTY Session Manager.", e);
                 }
 
             }
             else if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
             {
-                Stream s = getRemoteCsvFile(uri);
-                if (s != null)
+                Stream s = null;
+                try
                 {
-                    try
+                    s = getRemoteCsvFile(uri, proxySettings);
+                    if (s != null)
                     {
                         csvList = new List<CsvRecord>(engine.ReadStream(new StreamReader(s)));
                     }
-                    catch
-                    {
-                        throw new Exception("Unable to parse sessions file." + Environment.NewLine +
-                                            "The file may be corrupted or from" + Environment.NewLine +
-                                            "a previous version of PuTTY Session Manager.");
-                    }
-                    finally
-                    {
-                        if ( s != null )
-                            s.Close();
-                    }
+                }
+                catch (RemoteSessionImportException rsie)
+                {
+                    throw rsie;
+                }
+                catch (Exception e)
+                {
+                    throw new SessionImportException("Unable to parse sessions file." + Environment.NewLine +
+                                        "The file may be corrupted or from" + Environment.NewLine +
+                                        "a previous version of PuTTY Session Manager.", e);
+                }
+                finally
+                {
+                    if ( s != null )
+                        s.Close();
                 }
             }
             else
             {
-                throw new Exception("Unable to parse location: unsupported protocol");
+                throw new SessionImportException("Unable to parse location: unsupported protocol");
             }
 
             if (csvList != null)
@@ -153,22 +156,27 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        private Stream getRemoteCsvFile(Uri sessionsUri)
+        private Stream getRemoteCsvFile(Uri sessionsUri, ProxySettings proxySettings)
         {
             WebClient wc = new WebClient();
             Stream stream = null;
 
+            if (proxySettings == null)
+            {
+                throw new RemoteSessionImportException("Proxy settings must be supplied");
+            }
+
             // Set the proxy options
-            int proxyMode = Properties.Settings.Default.ProxyMode;
-            if (proxyMode == (int)SessionController.ProxyMode.PROXY_IE)
+            SessionController.ProxyMode proxyMode = proxySettings.Mode;
+            if (proxyMode == SessionController.ProxyMode.PROXY_IE)
             {
                 wc.Proxy = WebRequest.GetSystemWebProxy();
             }
-            else if (proxyMode == (int)SessionController.ProxyMode.PROXY_NONE)
+            else if (proxyMode == SessionController.ProxyMode.PROXY_NONE)
             {
                 wc.Proxy = null;
             }
-            else if (proxyMode == (int)SessionController.ProxyMode.PROXY_USER)
+            else if (proxyMode == SessionController.ProxyMode.PROXY_USER)
             {
                 WebProxy wp = new WebProxy();
 
@@ -177,71 +185,58 @@ namespace uk.org.riseley.puttySessionManager.controller
                 try
                 {
                     // Create a new Uri object.
-                    proxyUri = new Uri("http://" + Properties.Settings.Default.ProxyServer
-                                           + ":" + Properties.Settings.Default.ProxyPort);
+                    proxyUri = new Uri("http://" + proxySettings.Host
+                                           + ":" + proxySettings.Port);
                     wp.Address = proxyUri;
                     wc.Proxy = wp;
                 }
                 catch (UriFormatException ufe)
                 {
-                    MessageBox.Show(null, "Check Proxy configuration: " + Environment.NewLine + ufe.Message
-                                      , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
+                    throw new RemoteSessionImportException("Check Proxy configuration: " + 
+                                                            Environment.NewLine + ufe.Message
+                                                            ,ufe);
                 }
 
             }
 
-            // Have 3 goes at this if Proxy auth is requested
-            bool tryAgain = true;
-            bool connected = false;
-            for (int i = 0; i < 3 && tryAgain == true && connected == false; i++)
-            {
-                try
-                {                    
-                    // Make sure that the file hasn't been cached by a proxy
-                    wc.Headers.Add("Cache-Control: max-age=0");
-                    stream = wc.OpenRead(sessionsUri);
-                    connected = true;
-                }
-                catch (WebException we)
-                {
-                    tryAgain = false;
-                    connected = false;
-
-                    // If the exception was a protocol error 
-                    // and proxy authentication is required 
-                    // ask for the credentials
-                    if (we.Status == WebExceptionStatus.ProtocolError)
-                    {
-                        HttpWebResponse hwe = (HttpWebResponse)we.Response;
-                        if (hwe.StatusCode == HttpStatusCode.ProxyAuthenticationRequired)
-                        {
-                            String realmHeader = hwe.Headers.Get("Proxy-Authenticate");
-                            String realm = "";
-                            if (realmHeader != null)
-                                realm = realmHeader.Substring(realmHeader.IndexOf("=") + 1);
-
-                            ProxyAuthenticationForm paf = new ProxyAuthenticationForm();
-                            paf.setRealm(realm);
-                            DialogResult dr = paf.ShowDialog();
-                            if (dr == DialogResult.OK)
-                            {
-                                wc.Proxy.Credentials = paf.getCredentials();
-                                tryAgain = true;
-                            }
-                        }
-                    }
-
-                    if (stream != null)
-                        stream.Close();
-                }
+            // Check if proxy auth is requested
+            try
+            {                    
+                // Make sure that the file hasn't been cached by a proxy
+                wc.Headers.Add("Cache-Control: max-age=0");
+                wc.Proxy.Credentials = proxySettings.Credential;
+                stream = wc.OpenRead(sessionsUri);
             }
-
-            if (connected == false)
+            catch (WebException we)
             {
+
+                // Close the stream if it's been opened
                 if (stream != null)
                     stream.Close();
-                return null;
+
+                // If the exception was a protocol error 
+                // and proxy authentication is required 
+                // ask for the credentials
+                if (we.Status == WebExceptionStatus.ProtocolError)
+                {
+                    HttpWebResponse hwe = (HttpWebResponse)we.Response;
+                    if (hwe.StatusCode == HttpStatusCode.ProxyAuthenticationRequired)
+                    {
+                        String realmHeader = hwe.Headers.Get("Proxy-Authenticate");
+                        String realm = "";
+                        if (realmHeader != null)
+                            realm = realmHeader.Substring(realmHeader.IndexOf("=") + 1);
+
+                        throw new RemoteSessionImportException("Proxy Authenication requested"
+                                                               , we
+                                                               , true
+                                                               , realm);
+                    }
+                }
+                else
+                {
+                    throw new RemoteSessionImportException("Unable to connect to remote host: " + we.Message, we);                            
+                }
             }
 
             return stream;

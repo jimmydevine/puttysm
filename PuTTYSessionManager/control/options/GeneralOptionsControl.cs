@@ -80,7 +80,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
 
         private void autostartCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            bool result = sc.setAutoStart(autostartCheckBox.Checked);
+            bool result = sc.setAutoStart(autostartCheckBox.Checked, Application.ExecutablePath);
             if (result == false)
             {
                 MessageBox.Show(this, "Failed to set \"Start on logon\" preference"

@@ -25,6 +25,8 @@ using System.Windows.Forms;
 using uk.org.riseley.puttySessionManager.model;
 using uk.org.riseley.puttySessionManager.model.eventargs;
 using uk.org.riseley.puttySessionManager.controller;
+using uk.org.riseley.puttySessionManager.model.exception;
+using uk.org.riseley.puttySessionManager.form;
 
 namespace uk.org.riseley.puttySessionManager.control.options
 {
@@ -124,9 +126,14 @@ namespace uk.org.riseley.puttySessionManager.control.options
                 return;
             }
 
+            ProxySettings ps = new ProxySettings((SessionController.ProxyMode)Properties.Settings.Default.ProxyMode
+                                                 , Properties.Settings.Default.ProxyServer
+                                                 , int.Parse(Properties.Settings.Default.ProxyPort)
+                                                );
+            String url = "";
             try
             {
-                String url = "";
+                
                 if (fileRadioButton.Checked == true)
                 {
                     url = fileTextBox.Text;
@@ -136,7 +143,20 @@ namespace uk.org.riseley.puttySessionManager.control.options
                     url = urlTextBox.Text;
                 }
 
-                sl = csvImporter.loadSessions(url);
+                sl = csvImporter.loadSessions(url,ps);
+            }
+            catch (RemoteSessionImportException rsie)
+            {
+                if (rsie.ProxyAuthRequested == true)
+                {
+                    ProxyAuthenticationForm paf = new ProxyAuthenticationForm();
+                    paf.setRealm(rsie.ProxyRealm);
+                    if (paf.ShowDialog() == DialogResult.OK)
+                    {
+                        ps.Credential = paf.getCredentials();
+                        sl = csvImporter.loadSessions(url, ps);
+                    }
+                }
             }
             catch (Exception ex)
             {

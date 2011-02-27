@@ -24,6 +24,7 @@ using System.Text;
 using System.Windows.Forms;
 using uk.org.riseley.puttySessionManager.controller;
 using System.IO;
+using uk.org.riseley.puttySessionManager.model;
 
 namespace uk.org.riseley.puttySessionManager.control.options
 {
@@ -31,11 +32,14 @@ namespace uk.org.riseley.puttySessionManager.control.options
     {
         private SessionController sc;
 
+        private ISettingsProvider psp;
+
         public PageantOptionsControl()
         {
             InitializeComponent();
 
             sc = SessionController.getInstance();
+            psp = new PropertySettingsProvider();
 
             // Reset all the elements to their saved state
             resetState();
@@ -83,7 +87,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
 
         private void launchPageantButton_Click(object sender, EventArgs e)
         {
-            String errMsg = sc.launchPageant();
+            String errMsg = sc.launchPageant(psp);
             if (errMsg.Equals("") == false)
             {
                 MessageBox.Show("Pageant Failed to start. Check the Pageant location.\n" +

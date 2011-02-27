@@ -69,7 +69,7 @@ namespace uk.org.riseley.puttySessionManager.model
             TreeNode ty = y as TreeNode;
 
             if ( tx == null || ty == null )
-                throw new ArgumentException();
+                throw new ArgumentException("Both arguements must be specified");
 
             Session sx = tx.Tag as Session;
             Session sy = ty.Tag as Session;
@@ -86,7 +86,6 @@ namespace uk.org.riseley.puttySessionManager.model
                 return -1 * sortOrder;
             else if (!(sx.IsFolder) && (sy.IsFolder))
                 return 1 * sortOrder;
-            // sx.IsFolder == sy.IsFolder
             else
                 return string.Compare(sx.SessionDisplayText, sy.SessionDisplayText);
         }

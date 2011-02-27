@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2311B4E6-E2BE-4FBC-9C30-65855CD3EE3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>uk.org.riseley.puttySessionManager</RootNamespace>
+    <AssemblyName>PSMLib</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FileHelpers">
+      <HintPath>..\PuTTYSessionManager\lib\FileHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controller\CsvSessionExportImpl.cs" />
+    <Compile Include="controller\CsvSessionImportImpl.cs" />
+    <Compile Include="controller\ISessionExport.cs" />
+    <Compile Include="controller\ISessionImport.cs" />
+    <Compile Include="controller\ISessionStorage.cs" />
+    <Compile Include="controller\RegistrySessionStorageImpl.cs" />
+    <Compile Include="controller\SessionAttributes.cs" />
+    <Compile Include="controller\SessionAttributesInterface.cs" />
+    <Compile Include="controller\SessionController.cs" />
+    <Compile Include="model\ClipboardExport.cs" />
+    <Compile Include="model\CopySessionRequest.cs" />
+    <Compile Include="model\CsvRecord.cs" />
+    <Compile Include="model\eventargs\ExportSessionEventArgs.cs" />
+    <Compile Include="model\eventargs\LaunchSessionEventArgs.cs" />
+    <Compile Include="model\eventargs\RefreshSessionsEventArgs.cs" />
+    <Compile Include="model\eventargs\SyncSessionsLoadedEventArgs.cs" />
+    <Compile Include="model\eventargs\SyncSessionsRequestedEventArgs.cs" />
+    <Compile Include="model\exception\RemoteSessionImportException.cs" />
+    <Compile Include="model\exception\SessionImportException.cs" />
+    <Compile Include="model\HotkeyModifier.cs" />
+    <Compile Include="model\NewSessionRequest.cs" />
+    <Compile Include="model\ProxySettings.cs" />
+    <Compile Include="model\Session.cs" />
+    <Compile Include="model\SessionAction.cs" />
+    <Compile Include="model\ISettingsProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
