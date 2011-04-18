@@ -45,13 +45,13 @@ namespace uk.org.riseley.puttySessionManager.control.options
         public void resetState()
         {
             // Check if the update url is changed
-            if (!urlTextBox.Text.Equals(Properties.Settings.Default.DefaultUpdateUrl))
+            if (!urlTextBox.Text.Equals(psp.DefaultUpdateUrl))
                 urlCheckBox.Checked = false;
             else
                 urlCheckBox.Checked = true;
 
             // Reset the proxy mode button to the saved pref
-            SessionController.ProxyMode pm = (SessionController.ProxyMode)Properties.Settings.Default.ProxyMode;
+            SessionController.ProxyMode pm = (SessionController.ProxyMode)psp.ProxyMode;
             if (pm == SessionController.ProxyMode.PROXY_IE)
             {
                 ieProxyRadioButton.Checked = true;
@@ -72,7 +72,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
         {
             urlTextBox.ReadOnly = urlCheckBox.Checked;
             if (urlCheckBox.Checked == true)
-                urlTextBox.Text = Properties.Settings.Default.DefaultUpdateUrl;
+                urlTextBox.Text = psp.DefaultUpdateUrl;
         }
 
         private void checkForUpdateButton_Click(object sender, EventArgs e)
@@ -84,15 +84,15 @@ namespace uk.org.riseley.puttySessionManager.control.options
         {
             if (ieProxyRadioButton.Checked == true)
             {
-                Properties.Settings.Default.ProxyMode = (int)SessionController.ProxyMode.PROXY_IE;
+                psp.ProxyMode = (int)SessionController.ProxyMode.PROXY_IE;
             }
             else if (directRadioButton.Checked == true)
             {
-                Properties.Settings.Default.ProxyMode = (int)SessionController.ProxyMode.PROXY_NONE;
+                psp.ProxyMode = (int)SessionController.ProxyMode.PROXY_NONE;
             }
             else if (userProxyRadioButton.Checked == true)
             {
-                Properties.Settings.Default.ProxyMode = (int)SessionController.ProxyMode.PROXY_USER;
+                psp.ProxyMode = (int)SessionController.ProxyMode.PROXY_USER;
             }
             proxyServerTextBox.ReadOnly = !userProxyRadioButton.Checked;
             proxyPortTextBox.ReadOnly = !userProxyRadioButton.Checked;

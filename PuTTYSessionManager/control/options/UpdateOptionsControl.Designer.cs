@@ -45,7 +45,6 @@ namespace uk.org.riseley.puttySessionManager.control.options
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.updateTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.checkForUpdateButton = new System.Windows.Forms.Button();
             this.urlTextBox = new System.Windows.Forms.TextBox();
@@ -55,9 +54,9 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.proxyPortLabel = new System.Windows.Forms.Label();
             this.ieProxyRadioButton = new System.Windows.Forms.RadioButton();
             this.proxyServerLabel = new System.Windows.Forms.Label();
-            this.proxyPortTextBox = new System.Windows.Forms.TextBox();
             this.userProxyRadioButton = new System.Windows.Forms.RadioButton();
             this.proxyServerTextBox = new System.Windows.Forms.TextBox();
+            this.proxyPortTextBox = new System.Windows.Forms.MaskedTextBox();
             this.urlLabel = new System.Windows.Forms.Label();
             this.urlCheckBox = new System.Windows.Forms.CheckBox();
             this.updateTableLayout.SuspendLayout();
@@ -130,9 +129,9 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.proxyTableLayout.Controls.Add(this.proxyPortLabel, 2, 1);
             this.proxyTableLayout.Controls.Add(this.ieProxyRadioButton, 0, 0);
             this.proxyTableLayout.Controls.Add(this.proxyServerLabel, 1, 1);
-            this.proxyTableLayout.Controls.Add(this.proxyPortTextBox, 2, 2);
             this.proxyTableLayout.Controls.Add(this.userProxyRadioButton, 0, 2);
             this.proxyTableLayout.Controls.Add(this.proxyServerTextBox, 1, 2);
+            this.proxyTableLayout.Controls.Add(this.proxyPortTextBox, 2, 2);
             this.proxyTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.proxyTableLayout.Location = new System.Drawing.Point(3, 16);
             this.proxyTableLayout.Name = "proxyTableLayout";
@@ -147,9 +146,9 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.directRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.directRadioButton.AutoSize = true;
+            this.directRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.directRadioButton.Location = new System.Drawing.Point(3, 26);
             this.directRadioButton.Name = "directRadioButton";
-            this.directRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.directRadioButton.Size = new System.Drawing.Size(110, 17);
             this.directRadioButton.TabIndex = 4;
             this.directRadioButton.Text = "Direct &Connection";
@@ -170,10 +169,10 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.ieProxyRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ieProxyRadioButton.AutoSize = true;
+            this.ieProxyRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ieProxyRadioButton.Checked = true;
             this.ieProxyRadioButton.Location = new System.Drawing.Point(15, 3);
             this.ieProxyRadioButton.Name = "ieProxyRadioButton";
-            this.ieProxyRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ieProxyRadioButton.Size = new System.Drawing.Size(98, 17);
             this.ieProxyRadioButton.TabIndex = 3;
             this.ieProxyRadioButton.TabStop = true;
@@ -191,25 +190,13 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.proxyServerLabel.TabIndex = 24;
             this.proxyServerLabel.Text = "Proxy Server";
             // 
-            // proxyPortTextBox
-            // 
-            this.proxyPortTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.proxyPortTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "ProxyPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.proxyPortTextBox.Location = new System.Drawing.Point(271, 49);
-            this.proxyPortTextBox.MaxLength = 5;
-            this.proxyPortTextBox.Name = "proxyPortTextBox";
-            this.proxyPortTextBox.Size = new System.Drawing.Size(54, 20);
-            this.proxyPortTextBox.TabIndex = 7;
-            this.proxyPortTextBox.Text = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.ProxyPort;
-            // 
             // userProxyRadioButton
             // 
             this.userProxyRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.userProxyRadioButton.AutoSize = true;
+            this.userProxyRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.userProxyRadioButton.Location = new System.Drawing.Point(8, 49);
             this.userProxyRadioButton.Name = "userProxyRadioButton";
-            this.userProxyRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.userProxyRadioButton.Size = new System.Drawing.Size(105, 17);
             this.userProxyRadioButton.TabIndex = 5;
             this.userProxyRadioButton.Text = "Use &HTTP Proxy";
@@ -227,6 +214,18 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.proxyServerTextBox.TabIndex = 6;
             this.proxyServerTextBox.Text = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.ProxyServer;
             // 
+            // proxyPortTextBox
+            // 
+            this.proxyPortTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "ProxyPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.proxyPortTextBox.HidePromptOnLeave = true;
+            this.proxyPortTextBox.Location = new System.Drawing.Point(271, 49);
+            this.proxyPortTextBox.Mask = "00000";
+            this.proxyPortTextBox.Name = "proxyPortTextBox";
+            this.proxyPortTextBox.Size = new System.Drawing.Size(54, 20);
+            this.proxyPortTextBox.TabIndex = 26;
+            this.proxyPortTextBox.Text = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.ProxyPort;
+            this.proxyPortTextBox.ValidatingType = typeof(int);
+            // 
             // urlLabel
             // 
             this.urlLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
@@ -242,11 +241,11 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.urlCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.urlCheckBox.AutoSize = true;
+            this.urlCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.urlCheckBox.Checked = true;
             this.urlCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.urlCheckBox.Location = new System.Drawing.Point(3, 17);
             this.urlCheckBox.Name = "urlCheckBox";
-            this.urlCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.urlCheckBox.Size = new System.Drawing.Size(94, 17);
             this.urlCheckBox.TabIndex = 1;
             this.urlCheckBox.Text = "Use &default url";
@@ -282,8 +281,8 @@ namespace uk.org.riseley.puttySessionManager.control.options
         private System.Windows.Forms.Label proxyPortLabel;
         private System.Windows.Forms.RadioButton ieProxyRadioButton;
         private System.Windows.Forms.Label proxyServerLabel;
-        private System.Windows.Forms.TextBox proxyPortTextBox;
         private System.Windows.Forms.RadioButton userProxyRadioButton;
         private System.Windows.Forms.TextBox proxyServerTextBox;
+        private System.Windows.Forms.MaskedTextBox proxyPortTextBox;
     }
 }

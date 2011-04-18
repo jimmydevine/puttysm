@@ -23,7 +23,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
         public void resetState()
         {
             // Reset the WinSCP Version buttons to the saved pref
-            int wsVer = Properties.Settings.Default.WinSCPVersion;
+            int wsVer = psp.WinSCPVersion;
             if (wsVer == 3)
             {
                 wsVer3RadioButton.Checked = true;
@@ -34,7 +34,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             }
 
             // Reset the WinSCP protocol buttons to the saved pref
-            SessionController.Protocol wp = (SessionController.Protocol)Properties.Settings.Default.WinSCPProtocol;
+            SessionController.Protocol wp = (SessionController.Protocol)psp.WinSCPProtocol;
             if (wp == SessionController.Protocol.FTP)
             {
                 wsFtpRadioButton.Checked = true;
@@ -53,7 +53,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             }
 
             // Reset the WinSCP pref protocol buttons to the saved pref
-            SessionController.Protocol wpp = (SessionController.Protocol)Properties.Settings.Default.WinSCPPrefProtocol;
+            SessionController.Protocol wpp = (SessionController.Protocol)psp.WinSCPPrefProtocol;
             if (wpp == SessionController.Protocol.SFTP)
             {
                 wsprefSftpRadioButton.Checked = true;
@@ -81,27 +81,27 @@ namespace uk.org.riseley.puttySessionManager.control.options
 
             if (wsSessionInfoRadioButton.Checked == true)
             {
-                Properties.Settings.Default.WinSCPProtocol = (int)SessionController.Protocol.AUTO;
+                psp.WinSCPProtocol = (int)SessionController.Protocol.AUTO;
                 if (wsprefScpRadioButton.Checked == true)
                 {
-                    Properties.Settings.Default.WinSCPPrefProtocol = (int)SessionController.Protocol.SCP;
+                    psp.WinSCPPrefProtocol = (int)SessionController.Protocol.SCP;
                 }
                 else if (wsprefSftpRadioButton.Checked == true)
                 {
-                    Properties.Settings.Default.WinSCPPrefProtocol = (int)SessionController.Protocol.SFTP;
+                    psp.WinSCPPrefProtocol = (int)SessionController.Protocol.SFTP;
                 }
             }
             else if (wsSftpRadioButton.Checked == true)
             {
-                Properties.Settings.Default.WinSCPProtocol = (int)SessionController.Protocol.SFTP;
+                psp.WinSCPProtocol = (int)SessionController.Protocol.SFTP;
             }
             else if (wsScpRadioButton.Checked == true)
             {
-                Properties.Settings.Default.WinSCPProtocol = (int)SessionController.Protocol.SCP;
+                psp.WinSCPProtocol = (int)SessionController.Protocol.SCP;
             }
             else if (wsFtpRadioButton.Checked == true)
             {
-                Properties.Settings.Default.WinSCPProtocol = (int)SessionController.Protocol.FTP;
+                psp.WinSCPProtocol = (int)SessionController.Protocol.FTP;
             }
         }
 
@@ -116,20 +116,20 @@ namespace uk.org.riseley.puttySessionManager.control.options
             wsFtpRadioButton.Enabled = wsVer3RadioButton.Checked;
             if (wsVer3RadioButton.Checked == true)
             {
-                Properties.Settings.Default.WinSCPVersion = 3;
+                psp.WinSCPVersion = 3;
                 wsFtpRadioButton.Enabled = false;
                 // FTP is not supported in WinSCP v3.x
                 // so switch preference to SFTP
                 if (wsFtpRadioButton.Checked == true)
                 {
                     wsSftpRadioButton.Checked = true;
-                    Properties.Settings.Default.WinSCPProtocol = (int)SessionController.Protocol.SFTP;
+                    psp.WinSCPProtocol = (int)SessionController.Protocol.SFTP;
                 }
             }
             else if (wsVer4RadioButton.Checked == true)
             {
                 wsFtpRadioButton.Enabled = true;
-                Properties.Settings.Default.WinSCPVersion = 4;
+                psp.WinSCPVersion = 4;
             }
         }
 

@@ -35,13 +35,13 @@ namespace uk.org.riseley.puttySessionManager.controller
           , SELECTION_CHARS
           , SESSION_FOLDER
           , SSH_PORT_FORWARDS
-        };
+        }
 
         public enum SpecialAttributes
         {
             FOLDER
           , HOSTNAME
           , USERNAME
-        };
+        }
     }
 }

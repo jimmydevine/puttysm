@@ -16,13 +16,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
+using uk.org.riseley.puttySessionManager.model;
 
 namespace uk.org.riseley.puttySessionManager.control.options
 {
@@ -30,9 +26,12 @@ namespace uk.org.riseley.puttySessionManager.control.options
     {
         protected enum FileDialogType { PUTTY, PAGEANT, PAGEANT_KEYS, FILEZILLA, WINSCP, WINSCPINI, CSV };
 
+        protected ISettingsProvider psp;
+
         public OptionsControl()
         {
             InitializeComponent();
+            psp = PropertySettingsProvider.Instance;
         }
 
         protected void setupOpenFileDialogue(FileDialogType fdt)
@@ -50,30 +49,30 @@ namespace uk.org.riseley.puttySessionManager.control.options
             {
                 case FileDialogType.PUTTY:
                     filename = "putty.exe";
-                    currentFile = Properties.Settings.Default.PuttyLocation;
+                    currentFile = psp.PuttyLocation;
                     break;
                 case FileDialogType.PAGEANT:
                     filename = "pageant.exe";
-                    currentFile = Properties.Settings.Default.PageantLocation;
+                    currentFile = psp.PageantLocation;
                     break;
                 case FileDialogType.PAGEANT_KEYS:
                     filename = "*.ppk";
                     break;
                 case FileDialogType.FILEZILLA:
                     filename = "FileZilla.exe";
-                    currentFile = Properties.Settings.Default.FileZillaLocation;
+                    currentFile = psp.FileZillaLocation;
                     break;
                 case FileDialogType.WINSCP:
                     filename = "WinSCP*.exe";
-                    currentFile = Properties.Settings.Default.WinSCPLocation;
+                    currentFile = psp.WinSCPLocation;
                     break;
                 case FileDialogType.WINSCPINI:
                     filename = "*.ini";
-                    currentFile = Properties.Settings.Default.WinSCPIniLocation;
+                    currentFile = psp.WinSCPIniLocation;
                     break;
                 case FileDialogType.CSV:
                     filename = "*.csv";
-                    currentFile = Properties.Settings.Default.WinSCPIniLocation;
+                    currentFile = psp.WinSCPIniLocation;
                     break;
             }
 

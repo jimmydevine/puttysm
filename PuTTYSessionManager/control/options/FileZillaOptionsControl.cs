@@ -40,7 +40,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
         public void resetState()
         {
             // Reset the FileZilla Version buttons to the saved pref
-            int fzVer = Properties.Settings.Default.FileZillaVersion;
+            int fzVer = psp.FileZillaVersion;
             if (fzVer == 2)
             {
                 fzVer2RadioButton.Checked = true;
@@ -51,7 +51,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             }
 
             // Reset the filezilla protocol button to the save pref
-            SessionController.Protocol fp = (SessionController.Protocol)Properties.Settings.Default.FileZillaProtocol;
+            SessionController.Protocol fp = (SessionController.Protocol)psp.FileZillaProtocol;
             if (fp == SessionController.Protocol.FTP)
             {
                 fzFtpRadioButton.Checked = true;
@@ -80,19 +80,19 @@ namespace uk.org.riseley.puttySessionManager.control.options
         {
             if (fzFtpRadioButton.Checked == true)
             {
-                Properties.Settings.Default.FileZillaProtocol = (int)SessionController.Protocol.FTP;
+                psp.FileZillaProtocol = (int)SessionController.Protocol.FTP;
             }
             else if (fzFtpsRadioButton.Checked == true)
             {
-                Properties.Settings.Default.FileZillaProtocol = (int)SessionController.Protocol.FTPS;
+                psp.FileZillaProtocol = (int)SessionController.Protocol.FTPS;
             }
             else if (fzSftpRadioButton.Checked == true)
             {
-                Properties.Settings.Default.FileZillaProtocol = (int)SessionController.Protocol.SFTP;
+                psp.FileZillaProtocol = (int)SessionController.Protocol.SFTP;
             }
             else if (fzSessionInfoRadioButton.Checked == true)
             {
-                Properties.Settings.Default.FileZillaProtocol = (int)SessionController.Protocol.AUTO;
+                psp.FileZillaProtocol = (int)SessionController.Protocol.AUTO;
             }
         }
 
@@ -120,11 +120,11 @@ namespace uk.org.riseley.puttySessionManager.control.options
         {
             if (fzVer2RadioButton.Checked == true)
             {
-                Properties.Settings.Default.FileZillaVersion = 2;                
+                psp.FileZillaVersion = 2;                
             }
             else if (fzVer3RadioButton.Checked == true)
             {
-                Properties.Settings.Default.FileZillaVersion = 3;
+                psp.FileZillaVersion = 3;
             }
         }
     }

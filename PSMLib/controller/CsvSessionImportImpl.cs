@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 David Riseley 
+ * Copyright (C) 2007,2011 David Riseley 
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -158,8 +158,9 @@ namespace uk.org.riseley.puttySessionManager.controller
         /// <returns></returns>
         private Stream getRemoteCsvFile(Uri sessionsUri, ProxySettings proxySettings)
         {
-            WebClient wc = new WebClient();
-            Stream stream = null;
+            WebRequest wr = WebRequest.Create(sessionsUri);
+            WebResponse response = null;
+            Stream responseStream = null;
 
             if (proxySettings == null)
             {
@@ -170,11 +171,12 @@ namespace uk.org.riseley.puttySessionManager.controller
             SessionController.ProxyMode proxyMode = proxySettings.Mode;
             if (proxyMode == SessionController.ProxyMode.PROXY_IE)
             {
-                wc.Proxy = WebRequest.GetSystemWebProxy();
+                wr.Proxy = WebRequest.GetSystemWebProxy();
+                wr.Proxy.Credentials = proxySettings.Credential;                                
             }
             else if (proxyMode == SessionController.ProxyMode.PROXY_NONE)
             {
-                wc.Proxy = null;
+                wr.Proxy = null;
             }
             else if (proxyMode == SessionController.ProxyMode.PROXY_USER)
             {
@@ -188,7 +190,8 @@ namespace uk.org.riseley.puttySessionManager.controller
                     proxyUri = new Uri("http://" + proxySettings.Host
                                            + ":" + proxySettings.Port);
                     wp.Address = proxyUri;
-                    wc.Proxy = wp;
+                    wr.Proxy = wp;
+                    wr.Proxy.Credentials = proxySettings.Credential;                                
                 }
                 catch (UriFormatException ufe)
                 {
@@ -201,18 +204,23 @@ namespace uk.org.riseley.puttySessionManager.controller
 
             // Check if proxy auth is requested
             try
-            {                    
+            {
                 // Make sure that the file hasn't been cached by a proxy
-                wc.Headers.Add("Cache-Control: max-age=0");
-                wc.Proxy.Credentials = proxySettings.Credential;
-                stream = wc.OpenRead(sessionsUri);
+                wr.Headers.Add("Cache-Control: max-age=0");
+                response = wr.GetResponse();
+                wr.Timeout = 10000;
+                if (response != null)
+                {
+                    responseStream = response.GetResponseStream();
+                }
+
             }
             catch (WebException we)
             {
 
                 // Close the stream if it's been opened
-                if (stream != null)
-                    stream.Close();
+                if (response != null)
+                    response.Close();
 
                 // If the exception was a protocol error 
                 // and proxy authentication is required 
@@ -235,11 +243,15 @@ namespace uk.org.riseley.puttySessionManager.controller
                 }
                 else
                 {
-                    throw new RemoteSessionImportException("Unable to connect to remote host: " + we.Message, we);                            
+                    throw new RemoteSessionImportException("Unable to connect to remote host: " + we.Message, we);
                 }
             }
+            catch (Exception e)
+            {
+                throw new RemoteSessionImportException("Unable to connect to remote host: " + e.Message, e);
+            }
 
-            return stream;
+            return responseStream;
         }
     }
 }

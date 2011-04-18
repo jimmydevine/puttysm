@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 David Riseley 
+ * Copyright (C) 2007,2011 David Riseley 
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,16 +17,13 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections;
-using System.Windows.Forms;
 
 namespace uk.org.riseley.puttySessionManager.model
 {
     /// <summary>
     /// A class that allows tree nodes to be sorted by folder and name
     /// </summary>
-    public class SessionSorter : IComparer
+    public class SessionSorter : IComparer<Session>
     {
         /// <summary>
         /// Enumeration of different possible sort orders
@@ -44,15 +41,19 @@ namespace uk.org.riseley.puttySessionManager.model
         private int sortOrder;
 
         /// <summary>
+        /// An alpha numeric comparator
+        /// </summary>
+        private AlphanumComparator.AlphanumComparator alphanumComparator;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="order">The sort order for this instance</param>
         public SessionSorter(SortOrder order)
         {
             sortOrder = (int)order;
+            alphanumComparator = new AlphanumComparator.AlphanumComparator();
         }
-
-        #region IComparer Members
 
         /// <summary>
         /// Method to compare the values of two tree
@@ -62,32 +63,33 @@ namespace uk.org.riseley.puttySessionManager.model
         /// <param name="y"></param>
         /// <returns> x less than    y = less than 0
         ///           x equal to     y = 0
-        ///           x greater than y = greater than 0 </returns>
-        int IComparer.Compare(object x, object y)
+        ///           x greater than y = greater than 0</returns>
+        protected int compare(Session x, Session y)
         {
-            TreeNode tx = x as TreeNode;
-            TreeNode ty = y as TreeNode;
+            if (x == null || y == null)
+                throw new ArgumentException("Both arguments must be specified");
 
-            if ( tx == null || ty == null )
-                throw new ArgumentException("Both arguements must be specified");
-
-            Session sx = tx.Tag as Session;
-            Session sy = ty.Tag as Session;
-
-            if (sx == null && sy == null)
+            if (x == null && y == null)
                 return 0;
-            else if (sx == null && sy != null)
+            else if (x == null && y != null)
                 return -1 * sortOrder;
-            else if (sx != null && sy == null)
+            else if (x != null && y == null)
                 return 1 * sortOrder;
             else if (sortOrder == 0)
-                return string.Compare(sx.SessionDisplayText, sy.SessionDisplayText);
-            else if (sx.IsFolder && !(sy.IsFolder))
+                return alphanumComparator.Compare(x.SessionDisplayText, y.SessionDisplayText);
+            else if (x.IsFolder && !(y.IsFolder))
                 return -1 * sortOrder;
-            else if (!(sx.IsFolder) && (sy.IsFolder))
+            else if (!(x.IsFolder) && (y.IsFolder))
                 return 1 * sortOrder;
             else
-                return string.Compare(sx.SessionDisplayText, sy.SessionDisplayText);
+                return alphanumComparator.Compare(x.SessionDisplayText, y.SessionDisplayText);
+        }
+
+        #region IComparer Members
+
+        int IComparer<Session>.Compare(Session x, Session y)
+        {
+            return compare(x, y);
         }
 
         #endregion

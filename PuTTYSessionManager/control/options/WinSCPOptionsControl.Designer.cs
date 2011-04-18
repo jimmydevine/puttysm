@@ -103,14 +103,15 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.enableWinSCPCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.enableWinSCPCheckBox.AutoSize = true;
+            this.enableWinSCPCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.enableWinSCPCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.WinSCPEnabled;
             this.enableWinSCPCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "WinSCPEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.enableWinSCPCheckBox.Location = new System.Drawing.Point(3, 3);
             this.enableWinSCPCheckBox.Name = "enableWinSCPCheckBox";
-            this.enableWinSCPCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.enableWinSCPCheckBox.Size = new System.Drawing.Size(142, 17);
             this.enableWinSCPCheckBox.TabIndex = 23;
             this.enableWinSCPCheckBox.Text = "Enable WinSCP Support";
+            this.enableWinSCPCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.enableWinSCPCheckBox.UseVisualStyleBackColor = true;
             // 
             // winSCPIniTextBox
@@ -130,16 +131,17 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.useWinSCPIniCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.useWinSCPIniCheckBox.AutoSize = true;
+            this.useWinSCPIniCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.useWinSCPIniCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.WinSCPIniEnabled;
             this.useWinSCPIniCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "WinSCPIniEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.useWinSCPIniCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "WinSCPEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.useWinSCPIniCheckBox.Enabled = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.WinSCPEnabled;
             this.useWinSCPIniCheckBox.Location = new System.Drawing.Point(28, 101);
             this.useWinSCPIniCheckBox.Name = "useWinSCPIniCheckBox";
-            this.useWinSCPIniCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.useWinSCPIniCheckBox.Size = new System.Drawing.Size(117, 17);
             this.useWinSCPIniCheckBox.TabIndex = 28;
             this.useWinSCPIniCheckBox.Text = "Use WinSCP ini file";
+            this.useWinSCPIniCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.optionsToolTip.SetToolTip(this.useWinSCPIniCheckBox, "Pass the /ini option to WinSCP.\r\nUse the ini file in the location specified below" +
                     ".");
             this.useWinSCPIniCheckBox.UseVisualStyleBackColor = true;
@@ -203,26 +205,28 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // wsVer3RadioButton
             // 
             this.wsVer3RadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.wsVer3RadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsVer3RadioButton.Checked = true;
             this.wsVer3RadioButton.Location = new System.Drawing.Point(3, 3);
             this.wsVer3RadioButton.Name = "wsVer3RadioButton";
-            this.wsVer3RadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsVer3RadioButton.Size = new System.Drawing.Size(62, 17);
             this.wsVer3RadioButton.TabIndex = 0;
             this.wsVer3RadioButton.TabStop = true;
             this.wsVer3RadioButton.Text = "3.X";
+            this.wsVer3RadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsVer3RadioButton.UseVisualStyleBackColor = true;
             this.wsVer3RadioButton.CheckedChanged += new System.EventHandler(this.wsVerRadioButton_CheckedChanged);
             // 
             // wsVer4RadioButton
             // 
             this.wsVer4RadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.wsVer4RadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsVer4RadioButton.Location = new System.Drawing.Point(71, 3);
             this.wsVer4RadioButton.Name = "wsVer4RadioButton";
-            this.wsVer4RadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsVer4RadioButton.Size = new System.Drawing.Size(62, 17);
             this.wsVer4RadioButton.TabIndex = 1;
             this.wsVer4RadioButton.Text = "4.X";
+            this.wsVer4RadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsVer4RadioButton.UseVisualStyleBackColor = true;
             this.wsVer4RadioButton.CheckedChanged += new System.EventHandler(this.wsVerRadioButton_CheckedChanged);
             // 
@@ -264,14 +268,15 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.wsSessionInfoRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.wsSessionInfoRadioButton.AutoSize = true;
+            this.wsSessionInfoRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsSessionInfoRadioButton.Checked = true;
             this.wsSessionInfoRadioButton.Location = new System.Drawing.Point(5, 3);
             this.wsSessionInfoRadioButton.Name = "wsSessionInfoRadioButton";
-            this.wsSessionInfoRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsSessionInfoRadioButton.Size = new System.Drawing.Size(139, 17);
             this.wsSessionInfoRadioButton.TabIndex = 3;
             this.wsSessionInfoRadioButton.TabStop = true;
             this.wsSessionInfoRadioButton.Text = "Use Session Information";
+            this.wsSessionInfoRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsSessionInfoRadioButton.UseVisualStyleBackColor = true;
             this.wsSessionInfoRadioButton.CheckedChanged += new System.EventHandler(this.protocolRadioButton_CheckedChanged);
             // 
@@ -307,14 +312,15 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.wsprefSftpRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.wsprefSftpRadioButton.AutoSize = true;
+            this.wsprefSftpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsprefSftpRadioButton.Checked = true;
             this.wsprefSftpRadioButton.Location = new System.Drawing.Point(62, 3);
             this.wsprefSftpRadioButton.Name = "wsprefSftpRadioButton";
-            this.wsprefSftpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsprefSftpRadioButton.Size = new System.Drawing.Size(70, 17);
             this.wsprefSftpRadioButton.TabIndex = 3;
             this.wsprefSftpRadioButton.TabStop = true;
             this.wsprefSftpRadioButton.Text = "SFTP(22)";
+            this.wsprefSftpRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsprefSftpRadioButton.UseVisualStyleBackColor = true;
             this.wsprefSftpRadioButton.CheckedChanged += new System.EventHandler(this.protocolRadioButton_CheckedChanged);
             // 
@@ -322,12 +328,13 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.wsprefScpRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.wsprefScpRadioButton.AutoSize = true;
+            this.wsprefScpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsprefScpRadioButton.Location = new System.Drawing.Point(68, 27);
             this.wsprefScpRadioButton.Name = "wsprefScpRadioButton";
-            this.wsprefScpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsprefScpRadioButton.Size = new System.Drawing.Size(64, 17);
             this.wsprefScpRadioButton.TabIndex = 4;
             this.wsprefScpRadioButton.Text = "SCP(22)";
+            this.wsprefScpRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsprefScpRadioButton.UseVisualStyleBackColor = true;
             this.wsprefScpRadioButton.CheckedChanged += new System.EventHandler(this.protocolRadioButton_CheckedChanged);
             // 
@@ -335,13 +342,14 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.wsFtpRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wsFtpRadioButton.AutoSize = true;
+            this.wsFtpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsFtpRadioButton.Location = new System.Drawing.Point(155, 49);
             this.wsFtpRadioButton.Name = "wsFtpRadioButton";
-            this.wsFtpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsFtpRadioButton.Size = new System.Drawing.Size(66, 17);
             this.wsFtpRadioButton.TabIndex = 0;
             this.wsFtpRadioButton.TabStop = true;
             this.wsFtpRadioButton.Text = "FTP (21)";
+            this.wsFtpRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsFtpRadioButton.UseVisualStyleBackColor = true;
             this.wsFtpRadioButton.CheckedChanged += new System.EventHandler(this.protocolRadioButton_CheckedChanged);
             // 
@@ -349,13 +357,14 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.wsSftpRadioButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.wsSftpRadioButton.AutoSize = true;
+            this.wsSftpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsSftpRadioButton.Location = new System.Drawing.Point(151, 26);
             this.wsSftpRadioButton.Name = "wsSftpRadioButton";
-            this.wsSftpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsSftpRadioButton.Size = new System.Drawing.Size(70, 17);
             this.wsSftpRadioButton.TabIndex = 1;
             this.wsSftpRadioButton.TabStop = true;
             this.wsSftpRadioButton.Text = "SFTP(22)";
+            this.wsSftpRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsSftpRadioButton.UseVisualStyleBackColor = true;
             this.wsSftpRadioButton.CheckedChanged += new System.EventHandler(this.protocolRadioButton_CheckedChanged);
             // 
@@ -363,13 +372,14 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.wsScpRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.wsScpRadioButton.AutoSize = true;
+            this.wsScpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsScpRadioButton.Location = new System.Drawing.Point(157, 3);
             this.wsScpRadioButton.Name = "wsScpRadioButton";
-            this.wsScpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wsScpRadioButton.Size = new System.Drawing.Size(64, 17);
             this.wsScpRadioButton.TabIndex = 2;
             this.wsScpRadioButton.TabStop = true;
             this.wsScpRadioButton.Text = "SCP(22)";
+            this.wsScpRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.wsScpRadioButton.UseVisualStyleBackColor = true;
             this.wsScpRadioButton.CheckedChanged += new System.EventHandler(this.protocolRadioButton_CheckedChanged);
             // 

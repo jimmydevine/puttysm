@@ -32,14 +32,11 @@ namespace uk.org.riseley.puttySessionManager.control.options
     {
         private SessionController sc;
 
-        private ISettingsProvider psp;
-
         public PageantOptionsControl()
         {
             InitializeComponent();
 
             sc = SessionController.getInstance();
-            psp = new PropertySettingsProvider();
 
             // Reset all the elements to their saved state
             resetState();
@@ -51,7 +48,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             keysListBox.Items.Clear();
 
             // Initialise the key list from the properties
-            foreach (String key in Properties.Settings.Default.PageantKeyList)
+            foreach (String key in psp.PageantKeyList)
             {
                 keysListBox.Items.Add(key);
             }
@@ -71,7 +68,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             setupOpenFileDialogue(FileDialogType.PAGEANT_KEYS);
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Properties.Settings.Default.PageantKeyList.Add(openFileDialog.FileName);
+                psp.PageantKeyList.Add(openFileDialog.FileName);
                 keysListBox.Items.Add(openFileDialog.FileName);
             }
         }
@@ -80,7 +77,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
         {
             if (keysListBox.SelectedItem != null)
             {
-                Properties.Settings.Default.PageantKeyList.Remove(keysListBox.SelectedItem.ToString());
+                psp.PageantKeyList.Remove(keysListBox.SelectedItem.ToString());
                 keysListBox.Items.Remove(keysListBox.SelectedItem);
             }
         }

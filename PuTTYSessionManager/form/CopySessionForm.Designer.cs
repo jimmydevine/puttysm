@@ -123,28 +123,30 @@ namespace uk.org.riseley.puttySessionManager.form
             // copyAllRadioButton
             // 
             this.copyAllRadioButton.AutoSize = true;
+            this.copyAllRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.copyAllRadioButton.Checked = true;
             this.copyAllRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.copyAllRadioButton.Location = new System.Drawing.Point(3, 30);
             this.copyAllRadioButton.Name = "copyAllRadioButton";
-            this.copyAllRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.copyAllRadioButton.Size = new System.Drawing.Size(264, 17);
             this.copyAllRadioButton.TabIndex = 18;
             this.copyAllRadioButton.TabStop = true;
             this.copyAllRadioButton.Text = "Copy all attributes except hostname and folder";
+            this.copyAllRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.copyAllRadioButton.UseVisualStyleBackColor = true;
             this.copyAllRadioButton.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // includeRadioButton
             // 
             this.includeRadioButton.AutoSize = true;
+            this.includeRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.includeRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.includeRadioButton.Location = new System.Drawing.Point(3, 76);
             this.includeRadioButton.Name = "includeRadioButton";
-            this.includeRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.includeRadioButton.Size = new System.Drawing.Size(264, 17);
             this.includeRadioButton.TabIndex = 19;
             this.includeRadioButton.Text = "Copy only selected attributes";
+            this.includeRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.includeRadioButton.UseVisualStyleBackColor = true;
             this.includeRadioButton.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
@@ -203,130 +205,140 @@ namespace uk.org.riseley.puttySessionManager.form
             // hostnameCheckBox
             // 
             this.hostnameCheckBox.AutoSize = true;
+            this.hostnameCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.hostnameCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hostnameCheckBox.Location = new System.Drawing.Point(3, 72);
             this.hostnameCheckBox.Name = "hostnameCheckBox";
-            this.hostnameCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.hostnameCheckBox.Size = new System.Drawing.Size(125, 17);
             this.hostnameCheckBox.TabIndex = 13;
             this.hostnameCheckBox.Text = "Hostname";
+            this.hostnameCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.hostnameCheckBox.UseVisualStyleBackColor = true;
             this.hostnameCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // folderCheckBox
             // 
             this.folderCheckBox.AutoSize = true;
+            this.folderCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.folderCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderCheckBox.Location = new System.Drawing.Point(3, 187);
             this.folderCheckBox.Name = "folderCheckBox";
-            this.folderCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.folderCheckBox.Size = new System.Drawing.Size(125, 17);
             this.folderCheckBox.TabIndex = 8;
             this.folderCheckBox.Text = "Session Folder";
+            this.folderCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.folderCheckBox.UseVisualStyleBackColor = true;
             this.folderCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // portForwardCheckBox
             // 
             this.portForwardCheckBox.AutoSize = true;
+            this.portForwardCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.portForwardCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portForwardCheckBox.Location = new System.Drawing.Point(3, 210);
             this.portForwardCheckBox.Name = "portForwardCheckBox";
-            this.portForwardCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.portForwardCheckBox.Size = new System.Drawing.Size(125, 17);
             this.portForwardCheckBox.TabIndex = 7;
             this.portForwardCheckBox.Text = "SSH Port Forwards";
+            this.portForwardCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.portForwardCheckBox.UseVisualStyleBackColor = true;
             this.portForwardCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // selectionCheckBox
             // 
             this.selectionCheckBox.AutoSize = true;
+            this.selectionCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.selectionCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectionCheckBox.Location = new System.Drawing.Point(3, 164);
             this.selectionCheckBox.Name = "selectionCheckBox";
-            this.selectionCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.selectionCheckBox.Size = new System.Drawing.Size(125, 17);
             this.selectionCheckBox.TabIndex = 5;
             this.selectionCheckBox.Text = "Selection Characters";
+            this.selectionCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.selectionCheckBox.UseVisualStyleBackColor = true;
             this.selectionCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // keepalivesCheckBox
             // 
             this.keepalivesCheckBox.AutoSize = true;
+            this.keepalivesCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.keepalivesCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.keepalivesCheckBox.Location = new System.Drawing.Point(3, 95);
             this.keepalivesCheckBox.Name = "keepalivesCheckBox";
-            this.keepalivesCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.keepalivesCheckBox.Size = new System.Drawing.Size(125, 17);
             this.keepalivesCheckBox.TabIndex = 6;
             this.keepalivesCheckBox.Text = "Keepalives";
+            this.keepalivesCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.keepalivesCheckBox.UseVisualStyleBackColor = true;
             this.keepalivesCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // scrollBackCheckBox
             // 
             this.scrollBackCheckBox.AutoSize = true;
+            this.scrollBackCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.scrollBackCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scrollBackCheckBox.Location = new System.Drawing.Point(3, 141);
             this.scrollBackCheckBox.Name = "scrollBackCheckBox";
-            this.scrollBackCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.scrollBackCheckBox.Size = new System.Drawing.Size(125, 17);
             this.scrollBackCheckBox.TabIndex = 1;
             this.scrollBackCheckBox.Text = "Scrollback";
+            this.scrollBackCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.scrollBackCheckBox.UseVisualStyleBackColor = true;
             this.scrollBackCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // protocoCheckBox
             // 
             this.protocoCheckBox.AutoSize = true;
+            this.protocoCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.protocoCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.protocoCheckBox.Location = new System.Drawing.Point(3, 118);
             this.protocoCheckBox.Name = "protocoCheckBox";
-            this.protocoCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.protocoCheckBox.Size = new System.Drawing.Size(125, 17);
             this.protocoCheckBox.TabIndex = 3;
             this.protocoCheckBox.Text = "Protocol / Port";
+            this.protocoCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.protocoCheckBox.UseVisualStyleBackColor = true;
             this.protocoCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // coloursCheckBox
             // 
             this.coloursCheckBox.AutoSize = true;
+            this.coloursCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.coloursCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.coloursCheckBox.Location = new System.Drawing.Point(3, 3);
             this.coloursCheckBox.Name = "coloursCheckBox";
-            this.coloursCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.coloursCheckBox.Size = new System.Drawing.Size(125, 17);
             this.coloursCheckBox.TabIndex = 0;
             this.coloursCheckBox.Text = "Colours";
+            this.coloursCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.coloursCheckBox.UseVisualStyleBackColor = true;
             this.coloursCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // userNameCheckBox
             // 
             this.userNameCheckBox.AutoSize = true;
+            this.userNameCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.userNameCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userNameCheckBox.Location = new System.Drawing.Point(3, 26);
             this.userNameCheckBox.Name = "userNameCheckBox";
-            this.userNameCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.userNameCheckBox.Size = new System.Drawing.Size(125, 17);
             this.userNameCheckBox.TabIndex = 2;
             this.userNameCheckBox.Text = "Default Username";
+            this.userNameCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.userNameCheckBox.UseVisualStyleBackColor = true;
             this.userNameCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // fontCheckBox
             // 
             this.fontCheckBox.AutoSize = true;
+            this.fontCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fontCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fontCheckBox.Location = new System.Drawing.Point(3, 49);
             this.fontCheckBox.Name = "fontCheckBox";
-            this.fontCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fontCheckBox.Size = new System.Drawing.Size(125, 17);
             this.fontCheckBox.TabIndex = 4;
             this.fontCheckBox.Text = "Font";
+            this.fontCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fontCheckBox.UseVisualStyleBackColor = true;
             this.fontCheckBox.Click += new System.EventHandler(this.checkBox_Click);
             // 
@@ -369,7 +381,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.attributesTableLayout.SetRowSpan(this.attributeListBox, 10);
             this.attributeListBox.ScrollAlwaysVisible = true;
             this.attributeListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.attributeListBox.Size = new System.Drawing.Size(393, 212);
+            this.attributeListBox.Size = new System.Drawing.Size(393, 224);
             this.attributeListBox.Sorted = true;
             this.attributeListBox.TabIndex = 9;
             this.attributeListBox.SelectedValueChanged += new System.EventHandler(this.attributeListBox_SelectedValueChanged);
@@ -377,13 +389,14 @@ namespace uk.org.riseley.puttySessionManager.form
             // excludeRadioButton
             // 
             this.excludeRadioButton.AutoSize = true;
+            this.excludeRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.excludeRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.excludeRadioButton.Location = new System.Drawing.Point(3, 53);
             this.excludeRadioButton.Name = "excludeRadioButton";
-            this.excludeRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.excludeRadioButton.Size = new System.Drawing.Size(264, 17);
             this.excludeRadioButton.TabIndex = 21;
             this.excludeRadioButton.Text = "Exclude hostname, folder and selected attributes";
+            this.excludeRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.excludeRadioButton.UseVisualStyleBackColor = true;
             this.excludeRadioButton.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
@@ -411,7 +424,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(541, 418);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(541, 422);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
             // CopySessionForm
@@ -420,7 +433,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(541, 418);
+            this.ClientSize = new System.Drawing.Size(541, 422);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

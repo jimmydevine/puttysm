@@ -122,26 +122,28 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // fzVer2RadioButton
             // 
             this.fzVer2RadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.fzVer2RadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzVer2RadioButton.Checked = true;
             this.fzVer2RadioButton.Location = new System.Drawing.Point(3, 16);
             this.fzVer2RadioButton.Name = "fzVer2RadioButton";
-            this.fzVer2RadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fzVer2RadioButton.Size = new System.Drawing.Size(108, 17);
             this.fzVer2RadioButton.TabIndex = 0;
             this.fzVer2RadioButton.TabStop = true;
             this.fzVer2RadioButton.Text = "2.X";
+            this.fzVer2RadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzVer2RadioButton.UseVisualStyleBackColor = true;
             this.fzVer2RadioButton.CheckedChanged += new System.EventHandler(this.fzVerRadioButton_CheckedChanged);
             // 
             // fzVer3RadioButton
             // 
             this.fzVer3RadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.fzVer3RadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzVer3RadioButton.Location = new System.Drawing.Point(117, 16);
             this.fzVer3RadioButton.Name = "fzVer3RadioButton";
-            this.fzVer3RadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fzVer3RadioButton.Size = new System.Drawing.Size(108, 17);
             this.fzVer3RadioButton.TabIndex = 1;
             this.fzVer3RadioButton.Text = "3.X";
+            this.fzVer3RadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzVer3RadioButton.UseVisualStyleBackColor = true;
             this.fzVer3RadioButton.CheckedChanged += new System.EventHandler(this.fzVerRadioButton_CheckedChanged);
             // 
@@ -182,10 +184,10 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.fzSessionInfoRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fzSessionInfoRadioButton.AutoSize = true;
+            this.fzSessionInfoRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzSessionInfoRadioButton.Checked = true;
             this.fzSessionInfoRadioButton.Location = new System.Drawing.Point(3, 3);
             this.fzSessionInfoRadioButton.Name = "fzSessionInfoRadioButton";
-            this.fzSessionInfoRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fzSessionInfoRadioButton.Size = new System.Drawing.Size(105, 17);
             this.fzSessionInfoRadioButton.TabIndex = 3;
             this.fzSessionInfoRadioButton.TabStop = true;
@@ -199,9 +201,9 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.fzFtpsRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fzFtpsRadioButton.AutoSize = true;
+            this.fzFtpsRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzFtpsRadioButton.Location = new System.Drawing.Point(32, 72);
             this.fzFtpsRadioButton.Name = "fzFtpsRadioButton";
-            this.fzFtpsRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fzFtpsRadioButton.Size = new System.Drawing.Size(76, 17);
             this.fzFtpsRadioButton.TabIndex = 2;
             this.fzFtpsRadioButton.TabStop = true;
@@ -213,9 +215,9 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.fzFtpRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fzFtpRadioButton.AutoSize = true;
+            this.fzFtpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzFtpRadioButton.Location = new System.Drawing.Point(42, 26);
             this.fzFtpRadioButton.Name = "fzFtpRadioButton";
-            this.fzFtpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fzFtpRadioButton.Size = new System.Drawing.Size(66, 17);
             this.fzFtpRadioButton.TabIndex = 0;
             this.fzFtpRadioButton.TabStop = true;
@@ -227,9 +229,9 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.fzSftpRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fzSftpRadioButton.AutoSize = true;
+            this.fzSftpRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fzSftpRadioButton.Location = new System.Drawing.Point(38, 49);
             this.fzSftpRadioButton.Name = "fzSftpRadioButton";
-            this.fzSftpRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.fzSftpRadioButton.Size = new System.Drawing.Size(70, 17);
             this.fzSftpRadioButton.TabIndex = 1;
             this.fzSftpRadioButton.TabStop = true;
@@ -241,12 +243,12 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.enableFileZillaCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.enableFileZillaCheckBox.AutoSize = true;
+            this.enableFileZillaCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.enableFileZillaCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.FileZillaEnabled;
             this.filezillaTableLayout.SetColumnSpan(this.enableFileZillaCheckBox, 2);
             this.enableFileZillaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "FileZillaEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.enableFileZillaCheckBox.Location = new System.Drawing.Point(3, 5);
             this.enableFileZillaCheckBox.Name = "enableFileZillaCheckBox";
-            this.enableFileZillaCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.enableFileZillaCheckBox.Size = new System.Drawing.Size(137, 17);
             this.enableFileZillaCheckBox.TabIndex = 0;
             this.enableFileZillaCheckBox.Text = "&Enable FileZilla Support";
@@ -288,6 +290,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.sshAuthCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sshAuthCheckBox.AutoSize = true;
+            this.sshAuthCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.sshAuthCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.FileZillaAttemptKeyAuth;
             this.sshAuthCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.filezillaTableLayout.SetColumnSpan(this.sshAuthCheckBox, 2);
@@ -296,7 +299,6 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.sshAuthCheckBox.Enabled = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.FileZillaEnabled;
             this.sshAuthCheckBox.Location = new System.Drawing.Point(59, 104);
             this.sshAuthCheckBox.Name = "sshAuthCheckBox";
-            this.sshAuthCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.sshAuthCheckBox.Size = new System.Drawing.Size(178, 17);
             this.sshAuthCheckBox.TabIndex = 22;
             this.sshAuthCheckBox.Text = "&Attempt SSH Key Auth for SFTP";

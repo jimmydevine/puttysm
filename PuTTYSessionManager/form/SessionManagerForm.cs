@@ -16,11 +16,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using uk.org.riseley.puttySessionManager.model;
 using uk.org.riseley.puttySessionManager.model.eventargs;
@@ -159,7 +156,7 @@ namespace uk.org.riseley.puttySessionManager.form
 
             // Expand the tree if requested on startup
             if (Properties.Settings.Default.ExpandTreeOnStartup)
-                sessionTreeControl1.expandFullTree();
+                sessionTreeControl.expandFullTree();
 
             // Setup the display
             setDisplay();
@@ -323,13 +320,13 @@ namespace uk.org.riseley.puttySessionManager.form
 
             if (displayTreeToolStripMenuItem.Checked == true)
             {
-                currentSessionControl = sessionTreeControl1;
-                hiddenSessionControl = sessionListControl1;
+                currentSessionControl = sessionTreeControl;
+                hiddenSessionControl = sessionListControl;
             }
             else
             {
-                currentSessionControl = sessionListControl1;
-                hiddenSessionControl = sessionTreeControl1;            
+                currentSessionControl = sessionListControl;
+                hiddenSessionControl = sessionTreeControl;            
             }
 
             this.SuspendLayout();
@@ -512,8 +509,8 @@ namespace uk.org.riseley.puttySessionManager.form
             sessionEditor.resetDialogFont();
             hotKeyChooser.resetDialogFont();
             synchronizeForm.resetDialogFont();
-            sessionTreeControl1.resetDialogFont();
-            sessionListControl1.resetDialogFont();
+            sessionTreeControl.resetDialogFont();
+            sessionListControl.resetDialogFont();
         }
     }
 }

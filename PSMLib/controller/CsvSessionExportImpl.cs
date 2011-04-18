@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 David Riseley 
+ * Copyright (C) 2007,2011 David Riseley 
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -80,7 +80,7 @@ namespace uk.org.riseley.puttySessionManager.controller
         private List<CsvRecord> createCsvRecords(List<Session> list)
         {
             List<CsvRecord> csvList = new List<CsvRecord>();
-            foreach ( Session s in list )
+            foreach (Session s in list)
             {
                 csvList.Add(new CsvRecord(s));
             }

@@ -42,7 +42,7 @@ namespace uk.org.riseley.puttySessionManager.form
             InitializeComponent();
             sc = SessionController.getInstance();
             nsf = new NewSessionForm(this);
-            psp = new PropertySettingsProvider();
+            psp = PropertySettingsProvider.Instance;
             resetDialogFont();
         }
 
@@ -85,9 +85,7 @@ namespace uk.org.riseley.puttySessionManager.form
                 }
                 else
                 {
-                    MessageBox.Show("Successfully copied " + result.SessionCount + " hostnames"
-                        , "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    setStatusMessage("Successfully copied " + result.SessionCount + " hostnames");
                 }
                 return;
             }
@@ -133,8 +131,7 @@ namespace uk.org.riseley.puttySessionManager.form
                                 errorMessage
                     , "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    MessageBox.Show("Successfully exported " + savedCount + " sessions"
-                    , "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    setStatusMessage("Successfully exported " + savedCount + " sessions");
             }
 
         }
@@ -224,6 +221,17 @@ namespace uk.org.riseley.puttySessionManager.form
         {
             Font = Properties.Settings.Default.DialogFont;
             nsf.resetDialogFont();
+        }
+
+        private void statusStrip_Click(object sender, EventArgs e)
+        {
+            statusStrip.Hide();
+        }
+
+        protected void setStatusMessage(string message)
+        {
+            toolStripStatusLabel.Text = message;
+            statusStrip.Show();
         }
     }
 }

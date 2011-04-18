@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlphanumComparator\AlphanumComparator.cs" />
     <Compile Include="controller\CsvSessionExportImpl.cs" />
     <Compile Include="controller\CsvSessionImportImpl.cs" />
     <Compile Include="controller\ISessionExport.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="model\Session.cs" />
     <Compile Include="model\SessionAction.cs" />
     <Compile Include="model\ISettingsProvider.cs" />
+    <Compile Include="model\SessionSorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

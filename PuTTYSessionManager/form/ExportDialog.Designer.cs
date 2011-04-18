@@ -73,37 +73,39 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.registryRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registryRadioButton.AutoSize = true;
+            this.registryRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.registryRadioButton.Location = new System.Drawing.Point(59, 3);
             this.registryRadioButton.Name = "registryRadioButton";
-            this.registryRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.registryRadioButton.Size = new System.Drawing.Size(84, 17);
             this.registryRadioButton.TabIndex = 0;
             this.registryRadioButton.Text = "Registry File";
+            this.registryRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.registryRadioButton.UseVisualStyleBackColor = true;
             // 
             // csvRadioButton
             // 
             this.csvRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.csvRadioButton.AutoSize = true;
+            this.csvRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.csvRadioButton.Location = new System.Drawing.Point(70, 26);
             this.csvRadioButton.Name = "csvRadioButton";
-            this.csvRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.csvRadioButton.Size = new System.Drawing.Size(63, 17);
             this.csvRadioButton.TabIndex = 1;
             this.csvRadioButton.Text = "CSV File";
+            this.csvRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.csvRadioButton.UseVisualStyleBackColor = true;
             // 
             // clipRadioButton
             // 
             this.clipRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clipRadioButton.AutoSize = true;
+            this.clipRadioButton.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.clipRadioButton.Location = new System.Drawing.Point(19, 51);
             this.clipRadioButton.Name = "clipRadioButton";
-            this.clipRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.clipRadioButton.Size = new System.Drawing.Size(164, 17);
             this.clipRadioButton.TabIndex = 2;
             this.clipRadioButton.Text = "Copy hostnames to clipboard";
-            this.clipRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.clipRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.clipRadioButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1

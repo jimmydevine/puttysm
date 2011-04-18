@@ -45,7 +45,6 @@ namespace uk.org.riseley.puttySessionManager.control.options
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pageantTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.launchPageantButton = new System.Windows.Forms.Button();
             this.launchPageantCheckBox = new System.Windows.Forms.CheckBox();
@@ -97,11 +96,11 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.launchPageantCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.launchPageantCheckBox.AutoSize = true;
+            this.launchPageantCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.launchPageantCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.LaunchPageantOnStart;
             this.launchPageantCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "LaunchPageantOnStart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.launchPageantCheckBox.Location = new System.Drawing.Point(172, 6);
             this.launchPageantCheckBox.Name = "launchPageantCheckBox";
-            this.launchPageantCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.launchPageantCheckBox.Size = new System.Drawing.Size(152, 17);
             this.launchPageantCheckBox.TabIndex = 18;
             this.launchPageantCheckBox.Text = "Launch Pageant at &startup";

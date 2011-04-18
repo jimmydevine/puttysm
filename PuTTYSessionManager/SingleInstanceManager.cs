@@ -21,16 +21,13 @@
  * http://www.codeproject.com/KB/threads/SingleInstance.aspx
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows.Forms;
-using System.Reflection;
-
 namespace uk.org.riseley.puttySessionManager
 {
+    using System;
+    using System.Runtime.InteropServices;
+    using System.Threading;
+    using System.Windows.Forms;
+    using System.Reflection;
 
     public class SingleInstanceManager : IDisposable
     {
@@ -43,7 +40,7 @@ namespace uk.org.riseley.puttySessionManager
         [DllImport("kernel32.dll")]
         static extern bool SetEvent(IntPtr hEvent);
         [DllImport("kernel32.dll")]
-        static extern IntPtr OpenEvent(UInt32 dwDesiredAccess, bool bInheritable, string lpName);
+        static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritable, string lpName);
         [DllImport("kernel32.dll")]
         static extern bool CloseHandle(IntPtr hHandle);
         [DllImport("kernel32.dll")]
@@ -53,7 +50,7 @@ namespace uk.org.riseley.puttySessionManager
         private const uint SYNCHRONIZE = 0x00100000;
         private const uint EVENT_MODIFY_STATE = 0x0002;
 
-        private IntPtr m_EventHandle = IntPtr.Zero;		// unmanaged
+        private IntPtr m_EventHandle = IntPtr.Zero;    // unmanaged
 
         private bool eventAlreadyExists = false;
 
@@ -70,7 +67,7 @@ namespace uk.org.riseley.puttySessionManager
         public SingleInstanceManager()
         {
             // Name the event - keep the scope local to allow for multiple users
-            String eventName = "Local\\" + Assembly.GetExecutingAssembly().GetName().Name + "-SHOW_WINDOW"; 
+            string eventName = "Local\\" + Assembly.GetExecutingAssembly().GetName().Name + "-SHOW_WINDOW"; 
 
             // Try to open our event
             m_EventHandle = OpenEvent(EVENT_MODIFY_STATE | SYNCHRONIZE, false, eventName);
@@ -78,9 +75,11 @@ namespace uk.org.riseley.puttySessionManager
             // If it doesn't exist
             if (m_EventHandle == IntPtr.Zero) 
             {
-                //create our event
+                // create our event
                 m_EventHandle = CreateEvent(IntPtr.Zero, true, false, eventName);
-                if (m_EventHandle != IntPtr.Zero) //if successfull
+                
+                // if successfull
+                if (m_EventHandle != IntPtr.Zero)
                 {
                     Thread thread = new Thread(new ThreadStart(WaitForSignal));
                     thread.Start();
@@ -138,7 +137,9 @@ namespace uk.org.riseley.puttySessionManager
         public void SignalEvent()
         {
             if (m_EventHandle != IntPtr.Zero)
+            {
                 SetEvent(m_EventHandle);
+            }
         }
 
         /// <summary>
@@ -154,8 +155,10 @@ namespace uk.org.riseley.puttySessionManager
                 if (result == 0)
                 {
                     ResetEvent(m_EventHandle);
-                    if ( m_Instance != null && m_callback != null )
+                    if (m_Instance != null && m_callback != null)
+                    {
                         m_Instance.Invoke(m_callback, null);
+                    }
                 }
                 else
                 {
@@ -176,7 +179,9 @@ namespace uk.org.riseley.puttySessionManager
             {
                 // dispose unmanaged resources
                 if (m_EventHandle != IntPtr.Zero)
+                {
                     CloseHandle(m_EventHandle);
+                }
                 m_EventHandle = IntPtr.Zero;
 
                 disposed = true;
@@ -195,5 +200,3 @@ namespace uk.org.riseley.puttySessionManager
         #endregion
     }
 }
-
-

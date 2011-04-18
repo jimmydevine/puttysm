@@ -15,10 +15,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+using System.ComponentModel;
+using System.Net;
 namespace uk.org.riseley.puttySessionManager.model
 {
     public class PropertySettingsProvider : ISettingsProvider
     {
+
+        private static readonly PropertySettingsProvider instance = new PropertySettingsProvider();
+
+        private static NetworkCredential proxyCredential;
+
+        private PropertySettingsProvider() { }
+
+        public static PropertySettingsProvider Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
 
         public string PuttyLocation
         {
@@ -29,6 +45,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.PuttyLocation = value;
+                OnPropertyChanged("PuttyLocation");
             }
         }
 
@@ -41,6 +58,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeyNewEnabled = value;
+                OnPropertyChanged("HotkeyNewEnabled");
             }
         }
 
@@ -53,6 +71,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeyFavouriteEnabled = value;
+                OnPropertyChanged("HotkeyFavouriteEnabled");
             }
         }
 
@@ -65,6 +84,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession1 = value;
+                OnPropertyChanged("FavouriteSession1");
             }
         }
 
@@ -77,6 +97,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession2 = value;
+                OnPropertyChanged("FavouriteSession2");
             }
         }
 
@@ -89,6 +110,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession3 = value;
+                OnPropertyChanged("FavouriteSession3");
             }
         }
 
@@ -101,6 +123,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession4 = value;
+                OnPropertyChanged("FavouriteSession4");
             }
         }
 
@@ -113,6 +136,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession5 = value;
+                OnPropertyChanged("FavouriteSession5");
             }
         }
 
@@ -125,6 +149,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeyMinimizeEnabled = value;
+                OnPropertyChanged("HotkeyMinimizeEnabled");
             }
         }
 
@@ -137,6 +162,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.UpdateUrl = value;
+                OnPropertyChanged("UpdateUrl");
             }
         }
 
@@ -149,6 +175,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.ProxyMode = value;
+                OnPropertyChanged("ProxyMode");
             }
         }
 
@@ -161,6 +188,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.ProxyServer = value;
+                OnPropertyChanged("ProxyServer");
             }
         }
 
@@ -173,6 +201,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.ProxyPort = value;
+                OnPropertyChanged("ProxyPort");
             }
         }
 
@@ -185,6 +214,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.DefaultUpdateUrl = value;
+                OnPropertyChanged("DefaultUpdateUrl");
             }
         }
 
@@ -197,6 +227,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.SortOrder = value;
+                OnPropertyChanged("SortOrder");
             }
         }
 
@@ -209,6 +240,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.UpgradeRequired = value;
+                OnPropertyChanged("UpgradeRequired");
             }
         }
 
@@ -221,6 +253,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession6 = value;
+                OnPropertyChanged("FavouriteSession6");
 
             }
         }
@@ -234,6 +267,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession7 = value;
+                OnPropertyChanged("FavouriteSession7");
             }
         }
 
@@ -246,6 +280,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession8 = value;
+                OnPropertyChanged("FavouriteSession8");
             }
         }
 
@@ -258,6 +293,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession9 = value;
+                OnPropertyChanged("FavouriteSession9");
             }
         }
 
@@ -270,6 +306,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FavouriteSession10 = value;
+                OnPropertyChanged("FavouriteSession10");
             }
         }
 
@@ -282,6 +319,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey1Enabled = value;
+                OnPropertyChanged("Hotkey1Enabled");
             }
         }
 
@@ -294,6 +332,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey2Enabled = value;
+                OnPropertyChanged("Hotkey2Enabled");
             }
         }
 
@@ -306,6 +345,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey3Enabled = value;
+                OnPropertyChanged("Hotkey3Enabled");
             }
         }
 
@@ -318,6 +358,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey4Enabled = value;
+                OnPropertyChanged("Hotkey4Enabled");
 
             }
         }
@@ -331,6 +372,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey5Enabled = value;
+                OnPropertyChanged("Hotkey5Enabled");
             }
         }
 
@@ -343,6 +385,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey6Enabled = value;
+                OnPropertyChanged("Hotkey6Enabled");
             }
         }
 
@@ -355,6 +398,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey7Enabled = value;
+                OnPropertyChanged("Hotkey7Enabled");
             }
         }
 
@@ -366,7 +410,8 @@ namespace uk.org.riseley.puttySessionManager.model
             }
             set
             {
-                 Properties.Settings.Default.Hotkey8Enabled = value;
+                Properties.Settings.Default.Hotkey8Enabled = value;
+                OnPropertyChanged("Hotkey8Enabled");
             }
         }
 
@@ -379,6 +424,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey9Enabled = value;
+                OnPropertyChanged("Hotkey9Enabled");
             }
         }
 
@@ -391,6 +437,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.Hotkey10Enabled = value;
+                OnPropertyChanged("Hotkey10Enabled");
             }
         }
 
@@ -403,6 +450,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeyNewSession = value;
+                OnPropertyChanged("HotkeyNewSession");
             }
         }
 
@@ -415,6 +463,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeyMinimize = value;
+                OnPropertyChanged("HotkeyMinimize");
             }
         }
 
@@ -427,6 +476,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession1 = value;
+                OnPropertyChanged("HotkeySession1");
             }
         }
 
@@ -439,6 +489,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession2 = value;
+                OnPropertyChanged("HotkeySession2");
             }
         }
 
@@ -451,6 +502,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession3 = value;
+                OnPropertyChanged("HotkeySession3");
             }
         }
 
@@ -463,6 +515,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession4 = value;
+                OnPropertyChanged("HotkeySession4");
             }
         }
 
@@ -475,6 +528,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession5 = value;
+                OnPropertyChanged("HotkeySession5");
             }
         }
 
@@ -487,6 +541,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession6 = value;
+                OnPropertyChanged("HotkeySession6");
             }
         }
 
@@ -499,6 +554,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession7 = value;
+                OnPropertyChanged("HotkeySession7");
             }
         }
 
@@ -512,6 +568,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession8 = value;
+                OnPropertyChanged("HotkeySession8");
             }
         }
 
@@ -524,6 +581,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession9 = value;
+                OnPropertyChanged("HotkeySession9");
             }
         }
 
@@ -536,6 +594,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeySession10 = value;
+                OnPropertyChanged("HotkeySession10");
             }
         }
 
@@ -548,6 +607,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.PageantLocation = value;
+                OnPropertyChanged("PageantLocation");
             }
         }
 
@@ -560,6 +620,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.PageantKeyList = value;
+                OnPropertyChanged("PageantKeyList");
             }
         }
 
@@ -572,6 +633,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.LaunchPageantOnStart = value;
+                OnPropertyChanged("LaunchPageantOnStart");
             }
         }
 
@@ -584,6 +646,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.MinimizeOnUse = value;
+                OnPropertyChanged("MinimizeOnUse");
             }
         }
 
@@ -596,6 +659,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FileZillaLocation = value;
+                OnPropertyChanged("FileZillaLocation");
             }
         }
 
@@ -608,6 +672,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FileZillaEnabled = value;
+                OnPropertyChanged("FileZillaEnabled");
             }
         }
 
@@ -620,6 +685,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FileZillaAttemptKeyAuth = value;
+                OnPropertyChanged("FileZillaAttemptKeyAuth");
             }
         }
 
@@ -632,6 +698,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FileZillaProtocol = value;
+                OnPropertyChanged("FileZillaProtocol");
             }
         }
 
@@ -644,6 +711,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.WinSCPEnabled = value;
+                OnPropertyChanged("WinSCPEnabled");
             }
         }
 
@@ -656,6 +724,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.WinSCPLocation = value;
+                OnPropertyChanged("WinSCPLocation");
             }
         }
 
@@ -668,6 +737,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.WinSCPProtocol = value;
+                OnPropertyChanged("WinSCPProtocol");
             }
         }
 
@@ -679,7 +749,8 @@ namespace uk.org.riseley.puttySessionManager.model
             }
             set
             {
-                 Properties.Settings.Default.WinSCPPrefProtocol = value;
+                Properties.Settings.Default.WinSCPPrefProtocol = value;
+                OnPropertyChanged("WinSCPPrefProtocol");
             }
         }
 
@@ -691,7 +762,8 @@ namespace uk.org.riseley.puttySessionManager.model
             }
             set
             {
-                 Properties.Settings.Default.WinSCPVersion = value;
+                Properties.Settings.Default.WinSCPVersion = value;
+                OnPropertyChanged("WinSCPVersion");
             }
         }
 
@@ -704,6 +776,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.WinSCPIniLocation = value;
+                OnPropertyChanged("WinSCPIniLocation");
             }
         }
 
@@ -716,6 +789,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.WinSCPIniEnabled = value;
+                OnPropertyChanged("WinSCPIniEnabled");
             }
         }
 
@@ -728,6 +802,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.ShowInTaskbar = value;
+                OnPropertyChanged("ShowInTaskbar");
             }
         }
 
@@ -740,6 +815,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.HotkeyModifier = value;
+                OnPropertyChanged("HotkeyModifier");
             }
         }
 
@@ -752,6 +828,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.SessionSyncUrlLocation = value;
+                OnPropertyChanged("SessionSyncUrlLocation");
             }
         }
 
@@ -764,6 +841,7 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.SessionSyncFileLocation = value;
+                OnPropertyChanged("SessionSyncFileLocation");
             }
         }
 
@@ -776,6 +854,34 @@ namespace uk.org.riseley.puttySessionManager.model
             set
             {
                 Properties.Settings.Default.FileZillaVersion = value;
+                OnPropertyChanged("FileZillaVersion");
+            }
+        }
+
+        public NetworkCredential ProxyCredential
+        {
+            get
+            {
+                return proxyCredential;
+            }
+            set
+            {
+                proxyCredential = value;
+                OnPropertyChanged("ProxyCredential");
+            }
+        }
+
+
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        // Create the OnPropertyChanged method to raise the event
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
             }
         }
     }

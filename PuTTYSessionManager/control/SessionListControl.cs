@@ -32,6 +32,10 @@ namespace uk.org.riseley.puttySessionManager.control
     /// </summary>
     public partial class SessionListControl : SessionControl
     {
+        /// <summary>
+        /// Session Sorter
+        /// </summary>
+        private SessionSorter sorter;
 
         /// <summary>
         /// Default constructor for the list control
@@ -39,6 +43,7 @@ namespace uk.org.riseley.puttySessionManager.control
         public SessionListControl() : base()
         {
             InitializeComponent();
+            sorter = new SessionSorter(SessionSorter.SortOrder.FOLDER_IGNORE);
         }
 
         
@@ -53,11 +58,12 @@ namespace uk.org.riseley.puttySessionManager.control
             // Clear out the current list
             listBox1.Items.Clear();
 
-            // Add the contents of the list to the list box
-            listBox1.Items.AddRange(getSessionController().getSessionList().ToArray());
+            // Get the array and sort it
+            Session[] sessArray = getSessionController().getSessionList().ToArray();
+            Array.Sort<Session>(sessArray, sorter);
 
-            // Sort the list
-            listBox1.Sorted = true;
+            // Add the contents of the list to the list box
+            listBox1.Items.AddRange(sessArray);
 
             // Select the first session
             if ( listBox1.Items.Count > 0 )
@@ -101,10 +107,14 @@ namespace uk.org.riseley.puttySessionManager.control
 
             parent.Clear();
 
+            // Get the array and sort it
+            Session[] sessArray = getSessionController().getSessionList().ToArray();
+            Array.Sort(sessArray, sorter);
+
             // Setup the System tray array of menu items
-            ToolStripMenuItem[] tsmiArray = new ToolStripMenuItem[getSessionController().getSessionList().Count];
+            ToolStripMenuItem[] tsmiArray = new ToolStripMenuItem[sessArray.Length];
             int i = 0;
-            foreach (Session s in getSessionController().getSessionList())
+            foreach (Session s in sessArray)
             {
                 tsmiArray[i] = new ToolStripMenuItem(s.SessionDisplayText, null, listBox1_DoubleClick);
                 // Make sure the menu item is tagged with the session

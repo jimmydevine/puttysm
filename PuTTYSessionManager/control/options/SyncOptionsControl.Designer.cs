@@ -133,7 +133,6 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.fileRadioButton.Location = new System.Drawing.Point(125, 9);
             this.fileRadioButton.Name = "fileRadioButton";
             this.fileRadioButton.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.fileRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.fileRadioButton.Size = new System.Drawing.Size(41, 25);
             this.fileRadioButton.TabIndex = 0;
             this.fileRadioButton.TabStop = true;
@@ -149,7 +148,6 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.urlRadioButton.Location = new System.Drawing.Point(96, 52);
             this.urlRadioButton.Name = "urlRadioButton";
             this.urlRadioButton.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.urlRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.urlRadioButton.Size = new System.Drawing.Size(70, 25);
             this.urlRadioButton.TabIndex = 1;
             this.urlRadioButton.Text = "HTTP Url";

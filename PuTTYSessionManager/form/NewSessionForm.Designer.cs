@@ -151,15 +151,16 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.copyUsernameCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.copyUsernameCheckBox.AutoSize = true;
+            this.copyUsernameCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.copyUsernameCheckBox.Checked = true;
             this.copyUsernameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.newSessionTableLayout.SetColumnSpan(this.copyUsernameCheckBox, 2);
             this.copyUsernameCheckBox.Location = new System.Drawing.Point(58, 111);
             this.copyUsernameCheckBox.Name = "copyUsernameCheckBox";
-            this.copyUsernameCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.copyUsernameCheckBox.Size = new System.Drawing.Size(140, 17);
             this.copyUsernameCheckBox.TabIndex = 3;
             this.copyUsernameCheckBox.Text = "Copy Default Username";
+            this.copyUsernameCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.copyUsernameCheckBox.UseVisualStyleBackColor = true;
             // 
             // sessionFolderLabel
@@ -188,14 +189,15 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.launchSessionCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.launchSessionCheckBox.AutoSize = true;
+            this.launchSessionCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.launchSessionCheckBox.Checked = true;
             this.launchSessionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.launchSessionCheckBox.Location = new System.Drawing.Point(204, 111);
             this.launchSessionCheckBox.Name = "launchSessionCheckBox";
-            this.launchSessionCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.launchSessionCheckBox.Size = new System.Drawing.Size(123, 17);
             this.launchSessionCheckBox.TabIndex = 4;
             this.launchSessionCheckBox.Text = "Launch Session Now";
+            this.launchSessionCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.launchSessionCheckBox.UseVisualStyleBackColor = true;
             // 
             // newSessionTableLayout
@@ -227,7 +229,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.newSessionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.newSessionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.newSessionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.newSessionTableLayout.Size = new System.Drawing.Size(403, 166);
+            this.newSessionTableLayout.Size = new System.Drawing.Size(403, 170);
             this.newSessionTableLayout.TabIndex = 24;
             // 
             // NewSessionForm
@@ -236,7 +238,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(403, 166);
+            this.ClientSize = new System.Drawing.Size(403, 170);
             this.ControlBox = false;
             this.Controls.Add(this.newSessionTableLayout);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);

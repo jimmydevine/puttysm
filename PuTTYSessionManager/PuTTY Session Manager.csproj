@@ -207,8 +207,8 @@
     <Compile Include="form\Options.Designer.cs">
       <DependentUpon>Options.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\SessionTreeNodeSorter.cs" />
     <Compile Include="model\PropertySettingsProvider.cs" />
-    <Compile Include="model\SessionSorter.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -400,6 +400,9 @@
   <ItemGroup>
     <Content Include="buildinfo\basever.txt" />
     <Content Include="changelog.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AlphaNum-LGPL.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FileHelpers-LGPL.txt">

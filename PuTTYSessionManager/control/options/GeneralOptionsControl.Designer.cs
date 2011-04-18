@@ -151,6 +151,7 @@ namespace uk.org.riseley.puttySessionManager.control.options
             this.taskbarCheckBox.Size = new System.Drawing.Size(102, 17);
             this.taskbarCheckBox.TabIndex = 27;
             this.taskbarCheckBox.Text = "&Show in taskbar";
+            this.taskbarCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.optionsToolTip.SetToolTip(this.taskbarCheckBox, "Show PSM in the taskbar when the window is visible");
             this.taskbarCheckBox.UseVisualStyleBackColor = true;
             this.taskbarCheckBox.Click += new System.EventHandler(this.taskbarCheckBox_Click);
@@ -159,31 +160,33 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.startupMinimizeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.startupMinimizeCheckBox.AutoSize = true;
+            this.startupMinimizeCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.startupMinimizeCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.MinimizeOnStart;
             this.generalTableLayout.SetColumnSpan(this.startupMinimizeCheckBox, 2);
             this.startupMinimizeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "MinimizeOnStart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.startupMinimizeCheckBox.Location = new System.Drawing.Point(237, 3);
             this.startupMinimizeCheckBox.Name = "startupMinimizeCheckBox";
-            this.startupMinimizeCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.startupMinimizeCheckBox.Size = new System.Drawing.Size(116, 17);
             this.startupMinimizeCheckBox.TabIndex = 22;
             this.startupMinimizeCheckBox.Text = "Minimize on &startup";
+            this.startupMinimizeCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.startupMinimizeCheckBox.UseVisualStyleBackColor = true;
             // 
             // confirmExitCheckBox
             // 
             this.confirmExitCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.confirmExitCheckBox.AutoSize = true;
+            this.confirmExitCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.confirmExitCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.ConfirmExit;
             this.confirmExitCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.generalTableLayout.SetColumnSpan(this.confirmExitCheckBox, 2);
             this.confirmExitCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "ConfirmExit", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.confirmExitCheckBox.Location = new System.Drawing.Point(31, 26);
             this.confirmExitCheckBox.Name = "confirmExitCheckBox";
-            this.confirmExitCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.confirmExitCheckBox.Size = new System.Drawing.Size(95, 17);
             this.confirmExitCheckBox.TabIndex = 28;
             this.confirmExitCheckBox.Text = "&Confirm on exit";
+            this.confirmExitCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.confirmExitCheckBox.UseVisualStyleBackColor = true;
             // 
             // chooseDialogFontButton
@@ -219,14 +222,15 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.autoMinimizeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.autoMinimizeCheckBox.AutoSize = true;
+            this.autoMinimizeCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.autoMinimizeCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.MinimizeOnUse;
             this.autoMinimizeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "MinimizeOnUse", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.autoMinimizeCheckBox.Location = new System.Drawing.Point(263, 26);
             this.autoMinimizeCheckBox.Name = "autoMinimizeCheckBox";
-            this.autoMinimizeCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.autoMinimizeCheckBox.Size = new System.Drawing.Size(90, 17);
             this.autoMinimizeCheckBox.TabIndex = 25;
             this.autoMinimizeCheckBox.Text = "&Auto minimize";
+            this.autoMinimizeCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.optionsToolTip.SetToolTip(this.autoMinimizeCheckBox, "If enabled, PSM will hide itself when a new session\r\nor folder of sessions is lau" +
                     "ched");
             this.autoMinimizeCheckBox.UseVisualStyleBackColor = true;
@@ -235,42 +239,45 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.onTopCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.onTopCheckBox.AutoSize = true;
+            this.onTopCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.onTopCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.AlwaysOnTop;
             this.onTopCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.onTopCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "AlwaysOnTop", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.onTopCheckBox.Location = new System.Drawing.Point(261, 49);
             this.onTopCheckBox.Name = "onTopCheckBox";
-            this.onTopCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.onTopCheckBox.Size = new System.Drawing.Size(92, 17);
             this.onTopCheckBox.TabIndex = 19;
             this.onTopCheckBox.Text = "Always on &top";
+            this.onTopCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.onTopCheckBox.UseVisualStyleBackColor = true;
             // 
             // transparencyCheckBox
             // 
             this.transparencyCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.transparencyCheckBox.AutoSize = true;
+            this.transparencyCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.transparencyCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.TransparencyEnabled;
             this.transparencyCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "TransparencyEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.transparencyCheckBox.Location = new System.Drawing.Point(132, 49);
             this.transparencyCheckBox.Name = "transparencyCheckBox";
-            this.transparencyCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.transparencyCheckBox.Size = new System.Drawing.Size(123, 17);
             this.transparencyCheckBox.TabIndex = 13;
             this.transparencyCheckBox.Text = "Enable trans&parency";
+            this.transparencyCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.transparencyCheckBox.UseVisualStyleBackColor = true;
             // 
             // autostartCheckBox
             // 
             this.autostartCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.autostartCheckBox.AutoSize = true;
+            this.autostartCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.generalTableLayout.SetColumnSpan(this.autostartCheckBox, 2);
             this.autostartCheckBox.Location = new System.Drawing.Point(34, 3);
             this.autostartCheckBox.Name = "autostartCheckBox";
-            this.autostartCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.autostartCheckBox.Size = new System.Drawing.Size(92, 17);
             this.autostartCheckBox.TabIndex = 23;
             this.autostartCheckBox.Text = "Start on lo&gon";
+            this.autostartCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.optionsToolTip.SetToolTip(this.autostartCheckBox, "Automatically start PSM on Windows login");
             this.autostartCheckBox.UseVisualStyleBackColor = true;
             this.autostartCheckBox.Click += new System.EventHandler(this.autostartCheckBox_CheckedChanged);

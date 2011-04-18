@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2006,2007 David Riseley 
+ * Copyright (C) 2006,2011 David Riseley 
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -75,7 +75,7 @@ namespace uk.org.riseley.puttySessionManager.control
             toolTip.ReshowDelay = 0;
 
             SessionSorter.SortOrder order = (SessionSorter.SortOrder)Properties.Settings.Default.SortOrder;
-            treeView.TreeViewNodeSorter = new SessionSorter((SessionSorter.SortOrder)Properties.Settings.Default.SortOrder);
+            treeView.TreeViewNodeSorter = new SessionTreeNodeSorter((SessionSorter.SortOrder)Properties.Settings.Default.SortOrder);
             if (order == SessionSorter.SortOrder.FOLDER_FIRST)
                 foldersFirstToolStripMenuItem.Checked = true;
             else if (order == SessionSorter.SortOrder.FOLDER_IGNORE)
@@ -1221,27 +1221,27 @@ namespace uk.org.riseley.puttySessionManager.control
         /// <param name="e"></param>
         private void sortOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SessionSorter.SortOrder order = SessionSorter.SortOrder.FOLDER_IGNORE;
+            SessionTreeNodeSorter.SortOrder order = SessionSorter.SortOrder.FOLDER_IGNORE;
             if (sender == foldersFirstToolStripMenuItem)
             {
-                order = SessionSorter.SortOrder.FOLDER_FIRST;
+                order = SessionTreeNodeSorter.SortOrder.FOLDER_FIRST;
                 ignoreFoldersToolStripMenuItem.Checked = false;
                 foldersLastToolStripMenuItem.Checked = false;
             }
             else if (sender == ignoreFoldersToolStripMenuItem)
             {
-                order = SessionSorter.SortOrder.FOLDER_IGNORE;
+                order = SessionTreeNodeSorter.SortOrder.FOLDER_IGNORE;
                 foldersFirstToolStripMenuItem.Checked = false;
                 foldersLastToolStripMenuItem.Checked = false;
             }
             else if (sender == foldersLastToolStripMenuItem)
             {
-                order = SessionSorter.SortOrder.FOLDER_LAST;
+                order = SessionTreeNodeSorter.SortOrder.FOLDER_LAST;
                 foldersFirstToolStripMenuItem.Checked = false;
                 ignoreFoldersToolStripMenuItem.Checked = false;
             }
 
-            SessionSorter sorter = new SessionSorter(order);
+            SessionTreeNodeSorter sorter = new SessionTreeNodeSorter(order);
             treeView.BeginUpdate();
             treeView.TreeViewNodeSorter = sorter;
             treeView.EndUpdate();

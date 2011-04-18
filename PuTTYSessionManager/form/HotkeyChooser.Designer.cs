@@ -111,7 +111,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.optionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.optionsGroupBox.Location = new System.Drawing.Point(3, 3);
             this.optionsGroupBox.Name = "optionsGroupBox";
-            this.optionsGroupBox.Size = new System.Drawing.Size(435, 397);
+            this.optionsGroupBox.Size = new System.Drawing.Size(435, 401);
             this.optionsGroupBox.TabIndex = 0;
             this.optionsGroupBox.TabStop = false;
             this.optionsGroupBox.Text = "Options";
@@ -193,7 +193,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(429, 377);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(429, 381);
             this.tableLayoutPanel1.TabIndex = 52;
             // 
             // checkBox10
@@ -630,16 +630,17 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.newSessionHKCheckbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.newSessionHKCheckbox.AutoSize = true;
+            this.newSessionHKCheckbox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.newSessionHKCheckbox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.HotkeyNewEnabled;
             this.newSessionHKCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel1.SetColumnSpan(this.newSessionHKCheckbox, 3);
             this.newSessionHKCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "HotkeyNewEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.newSessionHKCheckbox.Location = new System.Drawing.Point(34, 32);
             this.newSessionHKCheckbox.Name = "newSessionHKCheckbox";
-            this.newSessionHKCheckbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.newSessionHKCheckbox.Size = new System.Drawing.Size(158, 17);
             this.newSessionHKCheckbox.TabIndex = 1;
             this.newSessionHKCheckbox.Text = "Enable New Session Hotkey";
+            this.newSessionHKCheckbox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.newSessionHKCheckbox.UseVisualStyleBackColor = true;
             this.newSessionHKCheckbox.Click += new System.EventHandler(this.hotkeyCheckbox_Click);
             // 
@@ -647,16 +648,17 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.minimizeWindowHKCheckbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.minimizeWindowHKCheckbox.AutoSize = true;
+            this.minimizeWindowHKCheckbox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.minimizeWindowHKCheckbox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.HotkeyMinimizeEnabled;
             this.minimizeWindowHKCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel1.SetColumnSpan(this.minimizeWindowHKCheckbox, 3);
             this.minimizeWindowHKCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "HotkeyMinimizeEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.minimizeWindowHKCheckbox.Location = new System.Drawing.Point(14, 59);
             this.minimizeWindowHKCheckbox.Name = "minimizeWindowHKCheckbox";
-            this.minimizeWindowHKCheckbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.minimizeWindowHKCheckbox.Size = new System.Drawing.Size(178, 17);
             this.minimizeWindowHKCheckbox.TabIndex = 3;
             this.minimizeWindowHKCheckbox.Text = "Enable Minimize Window Hotkey";
+            this.minimizeWindowHKCheckbox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.minimizeWindowHKCheckbox.UseVisualStyleBackColor = true;
             this.minimizeWindowHKCheckbox.Click += new System.EventHandler(this.hotkeyCheckbox_Click);
             // 
@@ -664,16 +666,17 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.favSessCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.favSessCheckBox.AutoSize = true;
+            this.favSessCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.favSessCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.HotkeyFavouriteEnabled;
             this.favSessCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel1.SetColumnSpan(this.favSessCheckBox, 3);
             this.favSessCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "HotkeyFavouriteEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.favSessCheckBox.Location = new System.Drawing.Point(4, 84);
             this.favSessCheckBox.Name = "favSessCheckBox";
-            this.favSessCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.favSessCheckBox.Size = new System.Drawing.Size(188, 17);
             this.favSessCheckBox.TabIndex = 5;
             this.favSessCheckBox.Text = "Enable Favourite Session Hotkeys";
+            this.favSessCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.favSessCheckBox.UseVisualStyleBackColor = true;
             this.favSessCheckBox.CheckedChanged += new System.EventHandler(this.favSessCheckBox_CheckedChanged);
             // 
@@ -913,14 +916,14 @@ namespace uk.org.riseley.puttySessionManager.form
             this.hotkeyTableLayout.RowCount = 2;
             this.hotkeyTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.67136F));
             this.hotkeyTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.32864F));
-            this.hotkeyTableLayout.Size = new System.Drawing.Size(441, 450);
+            this.hotkeyTableLayout.Size = new System.Drawing.Size(441, 454);
             this.hotkeyTableLayout.TabIndex = 1;
             // 
             // okButton
             // 
             this.okButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(150, 415);
+            this.okButton.Location = new System.Drawing.Point(150, 419);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(67, 22);
             this.okButton.TabIndex = 0;
@@ -932,7 +935,7 @@ namespace uk.org.riseley.puttySessionManager.form
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(223, 415);
+            this.cancelButton.Location = new System.Drawing.Point(223, 419);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
@@ -946,7 +949,7 @@ namespace uk.org.riseley.puttySessionManager.form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(441, 450);
+            this.ClientSize = new System.Drawing.Size(441, 454);
             this.ControlBox = false;
             this.Controls.Add(this.hotkeyTableLayout);
             this.DoubleBuffered = true;

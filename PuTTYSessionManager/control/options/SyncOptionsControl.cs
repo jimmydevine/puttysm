@@ -126,42 +126,65 @@ namespace uk.org.riseley.puttySessionManager.control.options
                 return;
             }
 
-            ProxySettings ps = new ProxySettings((SessionController.ProxyMode)Properties.Settings.Default.ProxyMode
-                                                 , Properties.Settings.Default.ProxyServer
-                                                 , int.Parse(Properties.Settings.Default.ProxyPort)
+            int proxyPort = -1;
+            if (psp.ProxyPort != null)
+            {
+                try
+                {
+                    proxyPort = int.Parse(psp.ProxyPort);
+                }
+                catch 
+                {
+                }
+            }
+
+            ProxySettings ps = new ProxySettings(
+                                                   (SessionController.ProxyMode)psp.ProxyMode
+                                                 , psp.ProxyServer
+                                                 , proxyPort
                                                 );
             String url = "";
-            try
+            if (fileRadioButton.Checked == true)
             {
-                
-                if (fileRadioButton.Checked == true)
-                {
-                    url = fileTextBox.Text;
-                }
-                else if (urlRadioButton.Checked == true)
-                {
-                    url = urlTextBox.Text;
-                }
-
-                sl = csvImporter.loadSessions(url,ps);
+                url = fileTextBox.Text;
             }
-            catch (RemoteSessionImportException rsie)
+            else if (urlRadioButton.Checked == true)
             {
-                if (rsie.ProxyAuthRequested == true)
+                url = urlTextBox.Text;
+            }
+
+            bool retry = true;
+            while (retry == true)
+            {
+                try
                 {
-                    ProxyAuthenticationForm paf = new ProxyAuthenticationForm();
-                    paf.setRealm(rsie.ProxyRealm);
-                    if (paf.ShowDialog() == DialogResult.OK)
+                    retry = false;
+                    sl = csvImporter.loadSessions(url, ps);
+                }
+                catch (RemoteSessionImportException rsie)
+                {
+                    if (rsie.ProxyAuthRequested == true)
                     {
-                        ps.Credential = paf.getCredentials();
-                        sl = csvImporter.loadSessions(url, ps);
+                        ProxyAuthenticationForm paf = new ProxyAuthenticationForm();
+                        paf.setRealm(rsie.ProxyRealm);
+                        if (paf.ShowDialog() == DialogResult.OK)
+                        {
+                            ps.Credential = paf.getCredentials();
+                            retry = true;
+                        }
+                    }
+                    else
+                    {
+                        outputTextBox.Text = rsie.Message;
+                        return;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                outputTextBox.Text = ex.Message;
-                return;
+                catch (Exception ex)
+                {
+                    outputTextBox.Text = ex.Message;
+                    return;
+                }
+
             }
 
             int count = 0;
@@ -169,9 +192,13 @@ namespace uk.org.riseley.puttySessionManager.control.options
             {
                 count = sl.Count;
                 outputTextBox.Text = count + " sessions loaded...";
-                SyncSessionsLoadedEventArgs ea = new SyncSessionsLoadedEventArgs(sl, sessionTemplate,ignoreCheckBox.Checked);
-                OnSyncSessionsLoaded (this, ea);
+                SyncSessionsLoadedEventArgs ea = new SyncSessionsLoadedEventArgs(sl, sessionTemplate, ignoreCheckBox.Checked);
+                OnSyncSessionsLoaded(this, ea);
                 setSessionsLoaded(true);
+            }
+            else
+            {
+                outputTextBox.Text = "Unable to load sessions from " + url;
             }
         }
 

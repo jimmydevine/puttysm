@@ -100,7 +100,7 @@ namespace uk.org.riseley.puttySessionManager.control
         public SessionControl()
         {
             sc = SessionController.getInstance();
-            psp = new PropertySettingsProvider();
+            psp = PropertySettingsProvider.Instance;
             InitializeComponent();
             SessionController.SessionsRefreshedEventHandler scHandler = new SessionController.SessionsRefreshedEventHandler(this.SessionsRefreshed);
             sc.SessionsRefreshed += scHandler;
@@ -111,7 +111,7 @@ namespace uk.org.riseley.puttySessionManager.control
             if (LaunchSession != null)
             {
                 // Hide the form if the option has been requested
-                if (Properties.Settings.Default.MinimizeOnUse == true && ParentForm.Visible)
+                if (psp.MinimizeOnUse == true && ParentForm.Visible)
                     ParentForm.Hide();
                 LaunchSession(this, se);
             }

@@ -45,7 +45,7 @@ namespace uk.org.riseley.puttySessionManager.control
         /// </summary>
         private void InitializeComponent()
         {
-            this.sessionNameHeader = new System.Windows.Forms.ColumnHeader();
+            this.sessionNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -57,12 +57,11 @@ namespace uk.org.riseley.puttySessionManager.control
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(150, 147);
-            this.listBox1.Sorted = true;
+            this.listBox1.Size = new System.Drawing.Size(150, 150);
             this.listBox1.TabIndex = 0;
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
-            this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
+            this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             // 
             // SessionListControl
             // 

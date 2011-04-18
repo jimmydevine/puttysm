@@ -16,9 +16,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Net;
 namespace uk.org.riseley.puttySessionManager.model
 {
-    public interface ISettingsProvider
+    public interface ISettingsProvider : INotifyPropertyChanged
     {
         string PuttyLocation
         {
@@ -333,6 +335,12 @@ namespace uk.org.riseley.puttySessionManager.model
         }
         
         int FileZillaVersion {
+            get;
+            set;
+        }
+
+        NetworkCredential ProxyCredential
+        {
             get;
             set;
         }

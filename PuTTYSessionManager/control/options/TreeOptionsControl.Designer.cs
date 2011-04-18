@@ -45,7 +45,6 @@ namespace uk.org.riseley.puttySessionManager.control.options
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.treeTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.subfolderTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -166,11 +165,11 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.expandTreeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.expandTreeCheckBox.AutoSize = true;
+            this.expandTreeCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.expandTreeCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.ExpandTreeOnStartup;
             this.expandTreeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "ExpandTreeOnStartup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.expandTreeCheckBox.Location = new System.Drawing.Point(192, 3);
             this.expandTreeCheckBox.Name = "expandTreeCheckBox";
-            this.expandTreeCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.expandTreeCheckBox.Size = new System.Drawing.Size(133, 17);
             this.expandTreeCheckBox.TabIndex = 27;
             this.expandTreeCheckBox.Text = "E&xpand tree on startup";
@@ -182,12 +181,12 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.displayTreeIconsCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.displayTreeIconsCheckBox.AutoSize = true;
+            this.displayTreeIconsCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.displayTreeIconsCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.DisplayTreeIcons;
             this.displayTreeIconsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.displayTreeIconsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "DisplayTreeIcons", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.displayTreeIconsCheckBox.Location = new System.Drawing.Point(205, 26);
             this.displayTreeIconsCheckBox.Name = "displayTreeIconsCheckBox";
-            this.displayTreeIconsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.displayTreeIconsCheckBox.Size = new System.Drawing.Size(120, 17);
             this.displayTreeIconsCheckBox.TabIndex = 30;
             this.displayTreeIconsCheckBox.Text = "&Display icons in tree";
@@ -199,12 +198,12 @@ namespace uk.org.riseley.puttySessionManager.control.options
             // 
             this.toolTipsCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.toolTipsCheckBox.AutoSize = true;
+            this.toolTipsCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTipsCheckBox.Checked = global::uk.org.riseley.puttySessionManager.Properties.Settings.Default.ToolTipsEnabled;
             this.toolTipsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolTipsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::uk.org.riseley.puttySessionManager.Properties.Settings.Default, "ToolTipsEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.toolTipsCheckBox.Location = new System.Drawing.Point(230, 49);
             this.toolTipsCheckBox.Name = "toolTipsCheckBox";
-            this.toolTipsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.toolTipsCheckBox.Size = new System.Drawing.Size(95, 17);
             this.toolTipsCheckBox.TabIndex = 33;
             this.toolTipsCheckBox.Text = "&Enable tooltips";
