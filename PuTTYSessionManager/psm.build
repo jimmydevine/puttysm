@@ -11,6 +11,7 @@
   <property name="dir.nsis" value="C:/Program Files (x86)/NSIS"/>
 
   <property name="dir.psmbase" value="PuTTYSessionManager"/>
+  <property name="dir.psmlibbase" value="PSMLib"/>
   <property name="dir.buildinfo" value="${dir.psmbase}/buildinfo"/>
   <property name="dir.installer" value="Installer"/>
   <property name="dir.release" value="release"/>
@@ -23,9 +24,11 @@
   <property name="output.exe" value="PuTTY Session Manager.exe"/>
   <property name="output.config" value="PuTTY Session Manager.exe.config"/>
   <property name="output.filehelpers" value="FileHelpers.dll"/>
+  <property name="output.psmlib" value="PSMLib.dll"/>
   <property name="output.changelog" value="changelog.txt"/>
   <property name="output.licence" value="gpl.txt"/>
   <property name="output.filehelpers.licence" value="FileHelpers-LGPL.txt"/>
+  <property name="output.alphanum.licence" value="AlphaNum-LGPL.txt"/>
 
   <target name="init" >
     <loadtasks assembly="${dir.nantcontrib}/bin/NAnt.Contrib.Tasks.dll" />
@@ -143,7 +146,9 @@
     <exec program="${dir.svn}/svn.exe"
           workingdir="${project::get-base-directory()}"
           commandline="revert &quot;${dir.psmbase}/Properties/AssemblyInfo.cs&quot;"/>
-
+    <exec program="${dir.svn}/svn.exe"
+          workingdir="${project::get-base-directory()}"
+          commandline="revert &quot;${dir.psmlibbase}/Properties/AssemblyInfo.cs&quot;"/>
   </target>
 
   <target name="getsvnversion"
@@ -318,11 +323,13 @@
          failonerror="true">
       <fileset basedir="${dir.build}" failonempty="true">
         <include name="${output.exe}"/>
+		<include name="${output.psmlib}"/>
         <include name="${output.config}"/>
         <include name="${output.changelog}"/>
         <include name="${output.licence}"/>
         <include name="${output.filehelpers}"/>
         <include name="${output.filehelpers.licence}"/>
+		<include name="${output.alphanum.licence}"/>
       </fileset>
     </zip>
   </target>
